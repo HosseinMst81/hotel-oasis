@@ -1,219 +1,482 @@
-🏨 Hotel Operations Management System
-A modern, internal web application for hotel employees to manage cabins, bookings, guests, and daily operations. Built with a modular architecture, clean UI, and robust backend services.
 
-https://img.shields.io/badge/React-19-0D9488?logo=react
-https://img.shields.io/badge/Supabase-Backend-3ECF8E?logo=supabase
-https://img.shields.io/badge/Styled--Components-6-DB7093?logo=styled-components
-https://img.shields.io/badge/Vite-5-646CFF?logo=vite
-https://img.shields.io/badge/License-MIT-blue.svg
+markdown
+# 🏨 Hotel Operations Management System
 
-✨ Features
-🔐 Authentication & User Management
-Secure login for hotel employees (no self-registration).
+A modern internal web application for hotel staff to efficiently manage cabins, bookings, guests, and daily operations.
 
-Manager-only account creation with role-based access (Employee / Manager).
+Built with a modular architecture, a clean and responsive UI, and a robust backend powered by Supabase.
 
-Profile management: update name, password, avatar.
+---
 
-🏠 Cabin Management
-View all cabins with photos, capacity, pricing, and discounts.
+## 📌 Badges
 
-Create, edit, or delete cabins; upload cabin photos.
+![React](https://img.shields.io/badge/React-19-0D9488?logo=react)
+![Supabase](https://img.shields.io/badge/Supabase-Backend-3ECF8E?logo=supabase)
+![Styled Components](https://img.shields.io/badge/Styled--Components-6-DB7093?logo=styled-components)
+![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-📅 Booking Management
-Create new bookings: select cabin, guest (existing or new), dates, guests, breakfast option.
+---
 
-View all bookings with powerful status filters (unconfirmed, checked-in, checked-out, cancelled).
+# ✨ Features
 
-Check-in: Confirm payment, optionally add breakfast (flat price).
+## 🔐 Authentication & User Management
 
-Check-out: Mark guest departure with timestamp.
+- Secure employee login (no public registration)
+- Manager-only account creation
+- Role-based access control (Manager / Employee)
+- User profile management
+  - Update full name
+  - Change password
+  - Upload avatar
 
-Soft delete: Cancel bookings (status cancelled) with dedicated view.
+---
 
-Automatic prevention of overlapping bookings for the same cabin.
+## 🏠 Cabin Management
 
-Guest data: full name, email, nationality, national ID (encrypted), country flag.
+- View all cabins with:
+  - Photos
+  - Capacity
+  - Pricing
+  - Discounts
+- Create new cabins
+- Edit cabin information
+- Delete cabins
+- Upload and manage cabin images
 
-📊 Operational Dashboard
-Today’s arrivals & departures with one-click actions.
+---
 
-KPIs for last 7/30/90 days: bookings, sales, check-ins, occupancy rate.
+## 📅 Booking Management
 
-Daily sales chart: total revenue & extras (breakfast).
+### Create Bookings
 
-Stay duration distribution chart.
+- Select cabin
+- Choose existing guest or create a new one
+- Pick check-in and check-out dates
+- Specify guest count
+- Add optional breakfast
 
-Interactive, modern charting with tooltips.
+### Manage Bookings
 
-⚙️ Application Settings
-Configure global parameters: breakfast price, min/max nights per booking, max guests.
+- View all bookings
+- Filter by status:
+  - Unconfirmed
+  - Checked-in
+  - Checked-out
+  - Cancelled
 
-🧱 Architecture
-The system follows a Modular Monolith with Vertical Slicing pattern, with a thin React frontend directly connected to Supabase services (PostgreSQL, Auth, Storage, Edge Functions).
+### Check-in Process
 
-Frontend: React SPA with feature-based modules.
+- Confirm payment
+- Optionally add breakfast
 
-Backend / Database: Supabase (managed PostgreSQL) with PostgREST auto-generated API.
+### Check-out Process
 
-Business Logic: Supabase Edge Functions for complex atomic operations (booking creation, check-in/out).
+- Register guest departure
+- Save checkout timestamp
 
-File Storage: Supabase Storage for avatars and cabin photos.
+### Cancellation
 
-Authentication: Supabase Auth with Row‑Level Security (RLS).
+- Soft delete bookings
+- Preserve booking history
+- Dedicated cancelled bookings view
 
-For detailed architecture decisions, see ARCHITECTURE.md (coming soon).
+### Smart Validation
 
-🎨 Design System
-A custom design token set built on Styled Components with a calm, professional palette:
+- Prevent overlapping reservations for the same cabin
 
-Primary: Deep Teal (#0D9488) – trust, clarity.
+### Guest Information
 
-Accent: Warm Gold (#F59E0B) – attention to key actions.
+- Full name
+- Email address
+- Nationality
+- Country flag
+- Encrypted National ID
 
-Typography: Inter (clean, legible).
+---
 
-Spacing: 4px base unit, consistent vertical rhythm.
+## 📊 Operational Dashboard
 
-Shadows: Soft, layered depth.
+### Today's Operations
 
-Tokens are defined in src/theme/theme.js and injected via a ThemeProvider.
+- Arrivals
+- Departures
+- One-click check-in/check-out actions
 
-🧪 Tech Stack
-Layer	Technology
-Frontend Framework	React 19
-Routing	React Router v7
-Styling	Styled Components v6
-Server State	TanStack React Query v5
-Forms	React Hook Form v7 + Zod
-Notifications	react-hot-toast
-Icons	react-icons
-Charts	Recharts
-Dates	date-fns v3 + react-datepicker
-Backend & Database	Supabase (PostgreSQL, Auth, Storage, Edge Functions)
-Build Tool	Vite
-Version Control	Git & GitHub
-🚀 Getting Started
-Prerequisites
-Node.js v18+ (v20 LTS recommended)
+### Key Performance Indicators
 
-npm v9+ or yarn
+Available for:
 
-A Supabase project (create one free)
+- Last 7 days
+- Last 30 days
+- Last 90 days
 
-Git
+Metrics include:
 
-1. Clone the Repository
-bash
+- Total bookings
+- Sales
+- Check-ins
+- Occupancy rate
+
+### Analytics
+
+- Daily revenue chart
+- Breakfast sales tracking
+- Stay duration distribution
+- Interactive charts with tooltips
+
+---
+
+## ⚙️ Application Settings
+
+Configure global hotel parameters:
+
+- Breakfast price
+- Minimum booking nights
+- Maximum booking nights
+- Maximum guests per booking
+
+---
+
+# 🧱 Architecture
+
+The application follows a **Modular Monolith** architecture with a **Vertical Slicing** pattern.
+
+```
+
+React SPA
+│
+▼
+Supabase Services
+├── PostgreSQL
+├── Auth
+├── Storage
+└── Edge Functions
+
+```
+
+### Frontend
+
+- React Single Page Application
+- Feature-based module organization
+
+### Backend & Database
+
+- Supabase
+- PostgreSQL
+- Auto-generated PostgREST API
+
+### Business Logic
+
+Implemented using Supabase Edge Functions:
+
+- Booking creation
+- Check-in
+- Check-out
+- Atomic operations
+
+### Storage
+
+- Cabin photos
+- User avatars
+
+### Authentication
+
+- Supabase Auth
+- Row-Level Security (RLS)
+
+> Detailed architecture documentation will be available in `ARCHITECTURE.md`.
+
+---
+
+# 🎨 Design System
+
+Custom design tokens built with Styled Components.
+
+## Color Palette
+
+| Token | Value | Purpose |
+|--------|---------|----------|
+| Primary | `#0D9488` | Trust & clarity |
+| Accent | `#F59E0B` | Highlight important actions |
+
+## Typography
+
+- Inter
+
+## Spacing
+
+- 4px base unit
+- Consistent vertical rhythm
+
+## Shadows
+
+- Soft layered elevation
+
+Design tokens are defined in:
+
+```
+
+src/theme/theme.js
+
+````
+
+and provided globally through `ThemeProvider`.
+
+---
+
+# 🧪 Tech Stack
+
+| Layer | Technology |
+|---------|-----------------------------|
+| Frontend Framework | React 19 |
+| Routing | React Router v7 |
+| Styling | Styled Components v6 |
+| Server State | TanStack React Query v5 |
+| Forms | React Hook Form v7 + Zod |
+| Notifications | react-hot-toast |
+| Icons | react-icons |
+| Charts | Recharts |
+| Date Utilities | date-fns v3 + react-datepicker |
+| Backend | Supabase |
+| Database | PostgreSQL |
+| Authentication | Supabase Auth |
+| File Storage | Supabase Storage |
+| Serverless | Supabase Edge Functions |
+| Build Tool | Vite |
+| Version Control | Git & GitHub |
+
+---
+
+# 🚀 Getting Started
+
+## Prerequisites
+
+- Node.js v18+ (v20 LTS recommended)
+- npm v9+ or Yarn
+- Git
+- A Supabase project
+
+---
+
+## 1. Clone the Repository
+
+```bash
 git clone https://github.com/your-username/hotel-ops.git
 cd hotel-ops
-2. Install Dependencies
-bash
+````
+
+---
+
+## 2. Install Dependencies
+
+```bash
 npm install
-3. Set Up Supabase
-Go to your Supabase project dashboard.
+```
 
-Under Settings > API, note the Project URL and anon public key.
+---
 
-Create a .env file in the project root:
+## 3. Configure Supabase
 
-env
+Create a `.env` file:
+
+```env
 VITE_SUPABASE_URL=https://your-project.supabase.co
 VITE_SUPABASE_ANON_KEY=your-anon-key-here
-Run the SQL migration script from supabase/migrations/20260604000000_init.sql in the Supabase SQL Editor to set up the database schema, roles, and Row‑Level Security (RLS) policies.
+```
 
-4. Run the Development Server
-bash
+Then run the SQL migration:
+
+```
+supabase/migrations/20260604000000_init.sql
+```
+
+This will create:
+
+* Database schema
+* Roles
+* Permissions
+* Row-Level Security policies
+
+---
+
+## 4. Start Development Server
+
+```bash
 npm run dev
-Open http://localhost:5173 in your browser.
+```
 
-📂 Project Structure
-text
+Open:
+
+```
+http://localhost:5173
+```
+
+---
+
+# 📂 Project Structure
+
+```text
 hotel-ops/
-├── public/               # Static assets
+├── public/
 ├── src/
-│   ├── api/              # Supabase client and query/mutation hooks
-│   ├── components/       # Shared UI components (Table, Modal, Button, etc.)
-│   ├── context/          # AuthContext, SettingsContext (React Context API)
-│   ├── features/         # Feature slices (vertical)
+│   ├── api/
+│   ├── components/
+│   ├── context/
+│   ├── features/
 │   │   ├── auth/
 │   │   ├── cabins/
 │   │   ├── bookings/
 │   │   ├── dashboard/
 │   │   ├── settings/
 │   │   └── users/
-│   ├── hooks/            # Custom generic hooks
-│   ├── layouts/          # AppLayout (sidebar + content)
-│   ├── pages/            # Route-level page components
-│   ├── theme/            # Design tokens, GlobalStyles, ThemeProvider
-│   ├── utils/            # Helpers, constants, formatters
+│   ├── hooks/
+│   ├── layouts/
+│   ├── pages/
+│   ├── theme/
+│   ├── utils/
 │   ├── App.jsx
 │   └── main.jsx
-├── supabase/             # Migrations & edge functions
-│   ├── migrations/       # SQL migration files
-│   └── functions/        # Deno Edge Functions
+├── supabase/
+│   ├── migrations/
+│   └── functions/
 ├── .env.example
 ├── .gitignore
 ├── package.json
 └── README.md
-🧭 Available Scripts
-Command	Description
-npm run dev	Start Vite development server with HMR
-npm run build	Build for production
-npm run preview	Preview the production build locally
-npm run lint	Run ESLint
-🔐 Security
-All communication over HTTPS.
+```
 
-Passwords hashed with bcrypt (via Supabase Auth).
+---
 
-Row‑Level Security (RLS) policies restrict data access per role.
+# 🧭 Available Scripts
 
-National ID stored encrypted at rest.
+| Command           | Description              |
+| ----------------- | ------------------------ |
+| `npm run dev`     | Start development server |
+| `npm run build`   | Build for production     |
+| `npm run preview` | Preview production build |
+| `npm run lint`    | Run ESLint               |
 
-JWT tokens with short expiration, stored in HTTP‑only cookies (or localStorage – TBD).
+---
 
-🚢 Deployment
-Frontend: Build with npm run build and deploy the dist/ folder to Vercel, Netlify, or Cloudflare Pages.
+# 🔐 Security
 
-Backend: Supabase is fully managed; no additional deployment needed. For custom Edge Functions, deploy via Supabase CLI.
+* HTTPS communication
+* Password hashing via Supabase Auth
+* Row-Level Security (RLS)
+* Encrypted National IDs
+* JWT authentication
+* Short-lived access tokens
 
-Environment Variables: Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your hosting provider.
+---
 
-Example deployment to Vercel:
+# 🚢 Deployment
 
-bash
+## Frontend
+
+```bash
+npm run build
+```
+
+Deploy the `dist/` directory to:
+
+* Vercel
+* Netlify
+* Cloudflare Pages
+
+---
+
+## Backend
+
+Supabase is fully managed.
+
+Deploy Edge Functions when needed:
+
+```bash
+supabase functions deploy
+```
+
+---
+
+## Environment Variables
+
+Configure:
+
+```env
+VITE_SUPABASE_URL
+VITE_SUPABASE_ANON_KEY
+```
+
+in your hosting provider.
+
+---
+
+## Example: Deploy to Vercel
+
+```bash
 npm i -g vercel
 vercel --prod
-📖 Documentation
-Architecture Overview (coming soon)
+```
 
-Design Tokens Reference
+---
 
-Database Schema
+# 📖 Documentation
 
-🤝 Contributing
-Contributions are welcome! Please open an issue or submit a pull request.
-For major changes, discuss first via GitHub Issues.
+* Architecture Overview *(Coming Soon)*
+* Design Tokens Reference
+* Database Schema
 
-Fork the repository.
+---
 
-Create your feature branch (git checkout -b feature/amazing-feature).
+# 🤝 Contributing
 
-Commit your changes (git commit -m 'Add some amazing feature').
+Contributions are welcome!
 
-Push to the branch (git push origin feature/amazing-feature).
+1. Fork the repository.
+2. Create a feature branch.
 
-Open a Pull Request.
+```bash
+git checkout -b feature/amazing-feature
+```
 
-📄 License
-Distributed under the MIT License. See LICENSE for more information.
+3. Commit your changes.
 
-🙌 Acknowledgements
-Supabase for the incredible backend platform.
+```bash
+git commit -m "Add some amazing feature"
+```
 
-React and Vite for the fast development experience.
+4. Push your branch.
 
-All open-source libraries used in this project.
+```bash
+git push origin feature/amazing-feature
+```
 
-Built with ❤️ for hotel teams everywhere.
+5. Open a Pull Request.
+
+For major changes, please open an issue first for discussion.
+
+---
+
+# 📄 License
+
+Distributed under the MIT License.
+
+See the `LICENSE` file for more information.
+
+---
+
+# 🙌 Acknowledgements
+
+* Supabase
+* React
+* Vite
+* All open-source libraries used in this project
+
+---
+
+<div align="center">
+
+**Built with ❤️ for hotel teams everywhere.**
+
+</div>
+
