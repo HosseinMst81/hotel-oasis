@@ -169,12 +169,12 @@ const GlobalStyles = createGlobalStyle`
     letter-spacing: -0.02em;
   }
 
-  h1 { font-size: var(--text-4xl); margin-bottom: var(--space-8); }   /* 36px */
-  h2 { font-size: var(--text-3xl); margin-bottom: var(--space-6); }   /* 30px */
-  h3 { font-size: var(--text-2xl); margin-bottom: var(--space-5); }   /* 24px */
-  h4 { font-size: var(--text-xl);  margin-bottom: var(--space-4); }   /* 20px */
-  h5 { font-size: var(--text-lg);  margin-bottom: var(--space-3); }   /* 18px */
-  h6 { font-size: var(--text-base); margin-bottom: var(--space-2); } /* 16px */
+  h1 { font-size: var(--text-4xl); margin-bottom: var(--space-8); font-weight: 900; }   /* 36px */
+  h2 { font-size: var(--text-3xl); margin-bottom: var(--space-6); font-weight: 800;}   /* 30px */
+  h3 { font-size: var(--text-2xl); margin-bottom: var(--space-5); font-weight: 700;}   /* 24px */
+  h4 { font-size: var(--text-xl);  margin-bottom: var(--space-4); font-weight: 700;}   /* 20px */
+  h5 { font-size: var(--text-lg);  margin-bottom: var(--space-3); font-weight: 700;}   /* 18px */
+  h6 { font-size: var(--text-base); margin-bottom: var(--space-2);font-weight: 700; } /* 16px */
   /* 3.  PARAGRAPHS & INLINE TEXT */
   p {
     margin-bottom: var(--space-4);
