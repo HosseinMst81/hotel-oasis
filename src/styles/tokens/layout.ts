@@ -1,0 +1,56 @@
+import { defineTokens } from "./types";
+
+export const layoutTokens = defineTokens({
+  "breakpoint-xs": "360px",
+  "breakpoint-sm": "640px",
+  "breakpoint-md": "768px",
+  "breakpoint-lg": "1024px",
+  "breakpoint-xl": "1280px",
+  "breakpoint-2xl": "1536px",
+
+  "container-xs": "36rem",
+  "container-sm": "54rem",
+  "container-md": "72rem",
+  "container-lg": "96rem",
+  "container-xl": "114rem",
+  "container-2xl": "132rem",
+  "container-page": "120rem",
+  "container-readable": "72ch",
+
+  "height-control-sm": "3.2rem",
+  "height-control-md": "4rem",
+  "height-control-lg": "4.8rem",
+  "height-control-xl": "5.6rem",
+  "height-header": "6.4rem",
+  "height-footer": "7.2rem",
+
+  "icon-size-xs": "1.2rem",
+  "icon-size-sm": "1.6rem",
+  "icon-size-md": "2rem",
+  "icon-size-lg": "2.4rem",
+  "icon-size-xl": "3.2rem",
+
+  "z-base": "0",
+  "z-raised": "10",
+  "z-sticky": "100",
+  "z-header": "200",
+  "z-dropdown": "300",
+  "z-popover": "400",
+  "z-tooltip": "500",
+  "z-overlay": "800",
+  "z-modal": "900",
+  "z-toast": "1000",
+  "z-max": "2147483647",
+
+  "layer-base": "var(--z-base)",
+  "layer-navigation": "var(--z-header)",
+  "layer-menu": "var(--z-dropdown)",
+  "layer-floating": "var(--z-popover)",
+  "layer-tooltip": "var(--z-tooltip)",
+  "layer-overlay": "var(--z-overlay)",
+  "layer-modal": "var(--z-modal)",
+  "layer-notification": "var(--z-toast)",
+
+  "loader-size": "4rem",
+  "loader-speed": "var(--duration-loader)",
+});
