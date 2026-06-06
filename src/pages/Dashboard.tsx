@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import styled from "styled-components";
+import DesignTokensTestDashboard from "../design/components/test/DesignTokensTestDashboard";
 
 const Container = styled.div`
   padding: 2rem;
@@ -17,6 +18,7 @@ const Dashboard: FC = () => {
     <Container>
       <Title>Dashboard</Title>
       <p>Welcome to the hotel management dashboard</p>
+      <DesignTokensTestDashboard/>
     </Container>
   );
 };
