@@ -1,6 +1,6 @@
-import type { RoundedToken } from "../styles";
+import type { Rounded } from "../../tokens";
 
-export interface HasRounded<Rounded extends string = RoundedToken> {
+export interface HasRounded<T extends string = Rounded> {
   /** Rounded appearance token for border-radius variants. */
-  rounded?: Rounded;
+  rounded?: T;
 }
