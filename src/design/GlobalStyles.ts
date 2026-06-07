@@ -1,30 +1,155 @@
 import { createGlobalStyle } from "styled-components";
-import {
-  darkThemeCssVariables,
-  foundationCssVariables,
-} from "./tokens/index";
 
 const GlobalStyles = createGlobalStyle`
-:root {
-${foundationCssVariables}
-}
-
-.dark,
-[data-theme="dark"] {
-${darkThemeCssVariables}
-}
 
 *, *::before, *::after {
-  box-sizing: border-box;
-}
-
-* {
+  box-sizing: inherit;
   margin: 0;
   padding: 0;
 }
 
+:root {
+  --color-black:#000000;
+  --color-white:#ffffff;
+  /* ===== Colors (Extracted from The Wild Oasis Logo) ===== */
+  /* Brand Palettes in oklch() */
+  --color-brand-primary: oklch(0.38 0.06 150);     /* Deep Forest Green #2b4233 */
+  --color-brand-secondary: oklch(0.85 0.08 85);    /* Warm Cabin Cream/Gold #e0ca9b */
+  --color-brand-accent: oklch(0.25 0.05 60);       /* Earthy Cabin Brown #3a2512 */
+  
+  /* System Status Colors */
+  --color-brand-success: oklch(0.65 0.18 145);
+  --color-brand-warning: oklch(0.78 0.16 75);
+  --color-brand-error: oklch(0.55 0.22 25);
+  --color-brand-info: oklch(0.60 0.14 230);
+  
+  /* Neutrals (Light Mode) */
+  --color-brand-background: oklch(0.98 0.01 85);   /* Soft off-white */
+  --color-brand-foreground: oklch(0.18 0.02 150);  /* Deep charcoal green */
+  --color-brand-dark: oklch(0.12 0.02 150);
+  --color-brand-light: oklch(0.99 0.005 85);
+  --color-brand-muted: oklch(0.62 0.02 150);
+
+  /* Interactive Variants - Primary */
+  --color-primary-hover: color-mix(in oklch, var(--color-brand-primary), black 15%);
+  --color-primary-active: color-mix(in oklch, var(--color-brand-primary), black 25%);
+  --color-primary-focus: color-mix(in oklch, var(--color-brand-primary), white 20%);
+  --color-primary-disabled: color-mix(in oklch, var(--color-brand-primary) 40%, transparent);
+  --color-primary-outline: color-mix(in oklch, var(--color-brand-primary) 30%, transparent);
+
+  /* Interactive Variants - Secondary */
+  --color-secondary-hover: color-mix(in oklch, var(--color-brand-secondary), black 10%);
+  --color-secondary-active: color-mix(in oklch, var(--color-brand-secondary), black 20%);
+  --color-secondary-focus: color-mix(in oklch, var(--color-brand-secondary), white 30%);
+  --color-secondary-disabled: color-mix(in oklch, var(--color-brand-secondary) 40%, transparent);
+  --color-secondary-outline: color-mix(in oklch, var(--color-brand-secondary) 30%, transparent);
+
+  /* Subtle Background Variants */
+  --color-bg-brand-subtle: color-mix(in oklch, var(--color-brand-primary) 8%, transparent);
+  --color-bg-success-subtle: color-mix(in oklch, var(--color-brand-success) 10%, transparent);
+  --color-bg-warning-subtle: color-mix(in oklch, var(--color-brand-warning) 10%, transparent);
+  --color-bg-error-subtle: color-mix(in oklch, var(--color-brand-error) 10%, transparent);
+
+  /* Semantic Typography Colors */
+  --color-text-primary: var(--color-brand-foreground);
+  --color-text-secondary: var(--color-brand-muted);
+  --color-text-inverse: var(--color-brand-light);
+  --color-text-error: var(--color-brand-error);
+
+  /* Semantic Border Colors */
+  --color-border-base: color-mix(in oklch, var(--color-brand-foreground) 15%, transparent);
+  --color-border-error: var(--color-brand-error);
+  --color-border-success: var(--color-brand-success);
+
+  /* Gradients */
+  --gradient-bg-brand: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-accent));
+  --gradient-text-brand: linear-gradient(to right, var(--color-brand-primary), var(--color-brand-secondary));
+  --color-gradient-aurora: linear-gradient(210deg, oklch(0.55 0.12 160), oklch(0.38 0.06 150), oklch(0.25 0.05 60));
+  --color-gradient-instagram: linear-gradient(45deg, oklch(0.55 0.2 30), oklch(0.6 0.22 340), oklch(0.7 0.18 70));
+  --color-gradient-first: var(--color-gradient-aurora);
+  --color-gradient-second: var(--color-gradient-instagram);
+
+  /* ===== Shadows ===== */
+  --shadow-xs: 0 1px 1px 0 rgb(43 66 51 / 0.01);
+  --shadow-sm: 0 1px 2px 0 rgb(43 66 51 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(43 66 51 / 0.08), 0 2px 4px -2px rgb(43 66 51 / 0.08);
+  --shadow-lg: 0 10px 15px -3px rgb(43 66 51 / 0.1), 0 4px 6px -4px rgb(43 66 51 / 0.1);
+
+  /* ===== Border Radius (Organic/Soft Nature Feel) ===== */
+  --radius-sm: 0.4rem;   /*  4px  */
+  --radius-md: 0.8rem;   /*  8px  */
+  --radius-lg: 1.2rem;   /* 12px  */
+  --radius-xl: 2rem;     /* 20px  */
+  --radius-full: 9999px;
+
+  /* ===== Spacing ===== */
+  --space-1: 0.4rem;   /*  4px  */
+  --space-2: 0.8rem;   /*  8px  */
+  --space-3: 1.2rem;   /* 12px  */
+  --space-4: 1.6rem;   /* 16px  */
+  --space-5: 2rem;     /* 20px  */
+  --space-6: 2.4rem;   /* 24px  */
+  --space-8: 3.2rem;   /* 32px  */
+  --space-10: 4rem;    /* 40px  */
+  --space-12: 4.8rem;  /* 48px  */
+
+  /* ===== Typography ===== */
+  --font-base: 'Poppins', system-ui, sans-serif;
+  --font-primary: 'Cinzel', 'Playfair Display', serif; /* Inspired by the natural elegance of the typography */
+  --font-secondary: var(--font-base);
+
+  --text-xs: 1.2rem;   /* 12px */
+  --text-sm: 1.4rem;   /* 14px */
+  --text-base: 1.6rem; /* 16px */
+  --text-lg: 1.8rem;   /* 18px */
+  --text-xl: 2rem;     /* 20px */
+  --text-2xl: 2.4rem;  /* 24px */
+  --text-3xl: 3rem;    /* 30px */
+  --text-4xl: 3.6rem;  /* 36px */
+
+  /* ===== Leadings ===== */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  /* ===== Custom Loading Indicator Config ===== */
+  --loader-size: 40px;
+  --loader-speed: 1.2s;
+}
+
+/* ===== Dark Mode Theme Overrides ===== */
+.dark {
+  /* Invert contrast and drop brightness while keeping nature/earth tones */
+  --color-brand-background: oklch(0.14 0.015 150);  /* Deep muted forest background */
+  --color-brand-foreground: oklch(0.94 0.02 85);    /* Soft warm cream text */
+  --color-brand-dark: oklch(0.08 0.01 150);
+  --color-brand-light: oklch(0.20 0.02 150);
+  --color-brand-muted: oklch(0.65 0.02 85);
+  
+  --color-brand-primary: oklch(0.55 0.07 150);     /* Brighter forest green for dark background readability */
+  --color-brand-secondary: oklch(0.80 0.08 85);    /* Retain soft warm cabin glow */
+  --color-brand-accent: oklch(0.40 0.05 60);       /* Lighter rustic brown */
+
+  /* Interactive Variants Updates for Dark Backgrounds */
+  --color-primary-hover: color-mix(in oklch, var(--color-brand-primary), white 15%);
+  --color-primary-active: color-mix(in oklch, var(--color-brand-primary), white 25%);
+  --color-primary-focus: color-mix(in oklch, var(--color-brand-primary), black 20%);
+  
+  --color-secondary-hover: color-mix(in oklch, var(--color-brand-secondary), white 10%);
+  --color-secondary-active: color-mix(in oklch, var(--color-brand-secondary), white 20%);
+
+  /* Shadow overrides for depth on dark background */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.6);
+}
+
 html {
   font-size: 62.5%;
+  box-sizing: border-box;
   scroll-behavior: smooth;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
