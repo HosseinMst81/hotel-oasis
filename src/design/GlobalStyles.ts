@@ -31,6 +31,7 @@ const GlobalStyles = createGlobalStyle`
   --color-brand-muted: oklch(0.62 0.02 150);
 
   /* Interactive Variants - Primary */
+  /* --color-primary-hover: color-mix(in oklch, var(--color-brand-primary), black 15%); */
   --color-primary-hover: color-mix(in oklch, var(--color-brand-primary), black 15%);
   --color-primary-active: color-mix(in oklch, var(--color-brand-primary), black 25%);
   --color-primary-focus: color-mix(in oklch, var(--color-brand-primary), white 20%);
@@ -43,6 +44,62 @@ const GlobalStyles = createGlobalStyle`
   --color-secondary-focus: color-mix(in oklch, var(--color-brand-secondary), white 30%);
   --color-secondary-disabled: color-mix(in oklch, var(--color-brand-secondary) 40%, transparent);
   --color-secondary-outline: color-mix(in oklch, var(--color-brand-secondary) 30%, transparent);
+ 
+  /* Interactive Variants - Accent */
+  --color-accent-hover: color-mix(in oklch, var(--color-brand-accent), black 10%);
+  --color-accent-active: color-mix(in oklch, var(--color-brand-accent), black 20%);
+  --color-accent-focus: color-mix(in oklch, var(--color-brand-accent), white 30%);
+  --color-accent-disabled: color-mix(in oklch, var(--color-brand-accent) 40%, transparent);
+  --color-accent-outline: color-mix(in oklch, var(--color-brand-accent) 30%, transparent);
+  
+  /* Interactive Variants - Info */
+  --color-info-hover: color-mix(in oklch, var(--color-brand-info), black 10%);
+  --color-info-active: color-mix(in oklch, var(--color-brand-info), black 20%);
+  --color-info-focus: color-mix(in oklch, var(--color-brand-info), white 30%);
+  --color-info-disabled: color-mix(in oklch, var(--color-brand-info) 40%, transparent);
+  --color-info-outline: color-mix(in oklch, var(--color-brand-info) 30%, transparent);
+
+  /* Interactive Variants - Muted */
+  --color-muted-hover: color-mix(in oklch, var(--color-brand-muted), black 10%);
+  --color-muted-active: color-mix(in oklch, var(--color-brand-muted), black 20%);
+  --color-muted-focus: color-mix(in oklch, var(--color-brand-muted), white 30%);
+  --color-muted-disabled: color-mix(in oklch, var(--color-brand-muted) 40%, transparent);
+  --color-muted-outline: color-mix(in oklch, var(--color-brand-muted) 30%, transparent);
+
+    /* Interactive Variants - success */
+  --color-success-hover: color-mix(in oklch, var(--color-brand-success), black 10%);
+  --color-success-active: color-mix(in oklch, var(--color-brand-success), black 20%);
+  --color-success-focus: color-mix(in oklch, var(--color-brand-success), white 30%);
+  --color-success-disabled: color-mix(in oklch, var(--color-brand-success) 40%, transparent);
+  --color-success-outline: color-mix(in oklch, var(--color-brand-success) 30%, transparent);
+
+  /* Interactive Variants - warning */
+  --color-warning-hover: color-mix(in oklch, var(--color-brand-warning), black 10%);
+  --color-warning-active: color-mix(in oklch, var(--color-brand-warning), black 20%);
+  --color-warning-focus: color-mix(in oklch, var(--color-brand-warning), white 30%);
+  --color-warning-disabled: color-mix(in oklch, var(--color-brand-warning) 40%, transparent);
+  --color-warning-outline: color-mix(in oklch, var(--color-brand-warning) 30%, transparent);
+
+    /* Interactive Variants - error */
+  --color-error-hover: color-mix(in oklch, var(--color-brand-error), black 10%);
+  --color-error-active: color-mix(in oklch, var(--color-brand-error), black 20%);
+  --color-error-focus: color-mix(in oklch, var(--color-brand-error), white 30%);
+  --color-error-disabled: color-mix(in oklch, var(--color-brand-error) 40%, transparent);
+  --color-error-outline: color-mix(in oklch, var(--color-brand-error) 30%, transparent);
+
+    /* Interactive Variants - dark */
+  --color-dark-hover: color-mix(in oklch, var(--color-brand-dark), black 10%);
+  --color-dark-active: color-mix(in oklch, var(--color-brand-dark), black 20%);
+  --color-dark-focus: color-mix(in oklch, var(--color-brand-dark), white 30%);
+  --color-dark-disabled: color-mix(in oklch, var(--color-brand-dark) 40%, transparent);
+  --color-dark-outline: color-mix(in oklch, var(--color-brand-dark) 30%, transparent);
+
+  /* Interactive Variants - light */
+  --color-light-hover: color-mix(in oklch, var(--color-brand-light), black 10%);
+  --color-light-active: color-mix(in oklch, var(--color-brand-light), black 20%);
+  --color-light-focus: color-mix(in oklch, var(--color-brand-light), white 30%);
+  --color-light-disabled: color-mix(in oklch, var(--color-brand-light) 40%, transparent);
+  --color-light-outline: color-mix(in oklch, var(--color-brand-light) 30%, transparent);
 
   /* Subtle Background Variants */
   --color-bg-brand-subtle: color-mix(in oklch, var(--color-brand-primary) 8%, transparent);
