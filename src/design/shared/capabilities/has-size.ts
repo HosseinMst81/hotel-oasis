@@ -1,6 +1,6 @@
-import type { SizeToken } from "../styles";
+import type { TextSize } from "../../tokens";
 
-export interface HasSize<Size extends string = SizeToken> {
+export interface HasSize<T extends string = TextSize> {
   /** Size variant backed by shared style tokens. */
-  size?: Size;
+  size?: T;
 }
