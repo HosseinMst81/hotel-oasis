@@ -1,6 +1,6 @@
-import type { AppearanceToken } from "../styles";
-
-export interface HasAppearance<Appearance extends string = AppearanceToken> {
+export interface HasAppearance<
+  Appearance extends string = "solid" | "ghost" | "outline" | "subtle",
+> {
   /** Visual appearance token such as solid, ghost, outline, or subtle. */
   appearance?: Appearance;
 }

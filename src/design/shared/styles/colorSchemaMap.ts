@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // ─── Color Scheme Map ─────────────────────────────────────────────────────────
 // Maps semantic color slots to CSS variable groups.
 // Each scheme defines: base, fg (foreground on base), hover, active, subtle, text-on-subtle, border

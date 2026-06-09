@@ -14,12 +14,18 @@
 
 import styled from "styled-components";
 import type { ButtonProps } from "./button.types";
-import { roundedMap } from "../../shared/mapping";
+import {
+  colorSchemeStylesMap,
+  roundedMap,
+  sizeMap,
+} from "../../shared/styles";
 
 const StyledButton = styled.button<ButtonProps>`
- ${({ rounded }) => rounded && roundedMap[rounded]}
+  ${({ rounded }) => rounded && roundedMap[rounded]}
+  ${({ colorScheme }) => colorScheme && colorSchemeStylesMap[colorScheme]}
+  ${({ size }) => size && sizeMap[size]}
 `;
 
 export const Button: React.FC<ButtonProps> = ({ children, ...rest }) => {
   return <StyledButton {...rest}>{children}</StyledButton>;
-}
+};

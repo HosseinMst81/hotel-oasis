@@ -154,6 +154,7 @@ const GlobalStyles = createGlobalStyle`
   --font-base: 'Poppins', system-ui, sans-serif;
   --font-primary: 'Cinzel', 'Playfair Display', serif; /* Inspired by the natural elegance of the typography */
   --font-secondary: var(--font-base);
+  --font-mono: 'Courier New', monospace;
 
   --text-xs: 1.2rem;   /* 12px */
   --text-sm: 1.4rem;   /* 14px */
@@ -163,6 +164,7 @@ const GlobalStyles = createGlobalStyle`
   --text-2xl: 2.4rem;  /* 24px */
   --text-3xl: 3rem;    /* 30px */
   --text-4xl: 3.6rem;  /* 36px */
+  --text-5xl: 4rem;  /* 40px */
 
   /* ===== Leadings ===== */
   --leading-none: 1;

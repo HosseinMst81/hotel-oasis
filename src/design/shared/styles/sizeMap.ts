@@ -3,7 +3,7 @@
 // Used by: Button, Badge, Input, Avatar, Spinner
 
 import { css } from "styled-components";
-import type { TextSize } from "../../tokens";
+import type { TextSize } from "../../tokens/size";
 
 
 export const sizeMap: Record<TextSize, ReturnType<typeof css>> = {
@@ -36,5 +36,29 @@ export const sizeMap: Record<TextSize, ReturnType<typeof css>> = {
     padding: var(--space-4) var(--space-6);
     min-height: 5.6rem;
     gap: var(--space-3);
+  `,
+  '2xl': css`
+    font-size: var(--text-2xl);
+    padding: var(--space-5) var(--space-7);
+    min-height: 6.4rem;
+    gap: var(--space-4);
+  `,
+  '3xl': css`
+    font-size: var(--text-3xl);
+    padding: var(--space-6) var(--space-8);
+    min-height: 7.2rem;
+    gap: var(--space-4);
+  `,
+  '4xl': css`
+    font-size: var(--text-4xl);
+    padding: var(--space-7) var(--space-9);
+    min-height: 8rem;
+    gap: var(--space-5);
+  `,
+  '5xl': css`
+    font-size: var(--text-5xl);
+    padding: var(--space-8) var(--space-10);
+    min-height: 10rem;
+    gap: var(--space-6);
   `,
 };

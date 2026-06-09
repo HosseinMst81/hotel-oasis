@@ -1,24 +1,35 @@
-import { defineTokens } from "./types";
+/**
+ * LAYER 1 — DESIGN TOKENS: Spacing
+ *
+ * Single source of truth for all spacing values.
+ * Maps to CSS custom properties (--space-*) in GlobalStyles.ts.
+ *
+ * Base unit: 0.4rem = 4px (at html font-size 62.5%)
+ */
 
-export const spacingTokens = defineTokens({
-  "space-0": "0",
-  "space-px": "1px",
-  "space-0-5": "0.2rem",
-  "space-1": "0.4rem",
-  "space-1-5": "0.6rem",
-  "space-2": "0.8rem",
-  "space-2-5": "1rem",
-  "space-3": "1.2rem",
-  "space-4": "1.6rem",
-  "space-5": "2rem",
-  "space-6": "2.4rem",
-  "space-7": "2.8rem",
-  "space-8": "3.2rem",
-  "space-10": "4rem",
-  "space-12": "4.8rem",
-  "space-14": "5.6rem",
-  "space-16": "6.4rem",
-  "space-20": "8rem",
-  "space-24": "9.6rem",
-  "space-32": "12.8rem",
-});
+export const spacingTokens = {
+  1:  'var(--space-1)',  //  4px
+  2:  'var(--space-2)',  //  8px
+  3:  'var(--space-3)',  // 12px
+  4:  'var(--space-4)',  // 16px
+  5:  'var(--space-5)',  // 20px
+  6:  'var(--space-6)',  // 24px
+  8:  'var(--space-8)',  // 32px
+  10: 'var(--space-10)', // 40px
+  12: 'var(--space-12)', // 48px
+} as const;
+
+export type SpacingScale = keyof typeof spacingTokens;
+
+// Raw pixel values — for use in non-CSS contexts (e.g. canvas, SVG, animation libraries)
+export const spacingRaw = {
+  1:  4,
+  2:  8,
+  3:  12,
+  4:  16,
+  5:  20,
+  6:  24,
+  8:  32,
+  10: 40,
+  12: 48,
+} as const satisfies Record<SpacingScale, number>;

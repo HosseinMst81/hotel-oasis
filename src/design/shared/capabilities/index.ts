@@ -1,4 +1,5 @@
 export * from "./has-appearance";
+export * from "./has-error";
 export * from "./has-children";
 export * from "./has-class-name";
 export * from "./has-color-scheme";
