@@ -17,11 +17,15 @@ import type { ButtonProps } from "./button.types";
 import { colorSchemeStylesMap, roundedMap, sizeMap } from "../../shared/styles";
 import Loading from "../../../pages/Loading";
 import { transitionStyles } from "../../shared/styles/transitionStylesMap";
+import { paddingStyles } from "../../shared/styles/paddingStylesMap";
+import { marginStyles } from "../../shared/styles/marginStylesMap";
 
 const StyledButton = styled.button<ButtonProps>`
   ${({ rounded = "none" }) => roundedMap[rounded]}
   ${({ colorScheme = "primary" }) => colorSchemeStylesMap[colorScheme]}
   ${({ size = "base" }) => sizeMap[size]}
+  ${(props) => marginStyles(props)}
+  ${(props) => paddingStyles(props)}
   ${({
     transitionDelay = "none",
     transitionDuration = "fast",
@@ -36,6 +40,6 @@ export const Button: React.FC<ButtonProps> = ({
   ...rest
 }) => {
   return (
-    <StyledButton {...rest}>{loading ? <Loading /> : children}</StyledButton>
+    <StyledButton py={3} px={5} {...rest}>{loading ? <Loading /> : children}</StyledButton>
   );
 };
