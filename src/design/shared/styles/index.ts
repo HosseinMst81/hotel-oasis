@@ -10,6 +10,6 @@
 export * from "./colorSchemaMap";
 export * from "./disableStylesMap";
 export * from "./focusRingMap";
-export * from "./loadingStylesMap";
 export * from "./roundedMap";
 export * from "./sizeMap";
+export * from './loadingStyleMap'
