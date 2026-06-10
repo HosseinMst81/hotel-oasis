@@ -1,5 +1,7 @@
 import type {
   HasClassName,
+  HasMargin,
+  HasPadding,
   HasSize,
 } from "../../shared/capabilities";
 import type { HasFontFamily } from "../../shared/capabilities/has-font-family";
@@ -13,6 +15,8 @@ export interface TextProps
   extends
     HasSize,
     HasfullWidth,
+    HasMargin,
+    HasPadding,
     HasClassName,
     HasLeading,
     HasWeight,
