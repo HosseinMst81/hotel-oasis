@@ -14,3 +14,4 @@ export * from "./focusRingMap";
 export * from "./roundedMap";
 export * from "./sizeMap";
 export * from './loadingStyleMap'
+export * from './typographyStylesMap'

@@ -11,20 +11,21 @@
 import styled from "styled-components";
 import type { TextProps } from "./text.types";
 
-import { sizeMap } from "../../shared/styles";
+import { typographyStyles } from "../../shared/styles";
 import { textAlignStyles } from "../../shared/styles/alignmentStylesMap";
-import { fontStylesMap } from "../../shared/styles/fontStylesMap";
-import { leadingMap } from "../../shared/styles/leadingMaps";
-import { textColorStyles } from "../../shared/styles/textColorStyles";
-import { fontWeight } from "../../tokens";
 import { marginStyles } from "../../shared/styles/marginStylesMap";
 import { paddingStyles } from "../../shared/styles/paddingStylesMap";
+import { textColorStyles } from "../../shared/styles/textColorStyles";
+import { fontStylesMap } from "../../shared/styles/fontStylesMap";
 
 const StyledText = styled.p<TextProps>`
-  ${({ size = "base" }) => sizeMap[size]}
+  ${({
+    lineHeight = "normal",
+    letterSpacing = "normal",
+    fontWeight = "medium",
+    fontSize = "md",
+  }) => typographyStyles({ fontWeight, lineHeight, letterSpacing, fontSize })}
   ${({ fontFamily = "base" }) => fontStylesMap[fontFamily]}
-  ${({ weight = "regular" }) => fontWeight[weight]}
-  ${({ leading = "normal" }) => leadingMap[leading]}
   ${({ textAlign = "left" }) => textAlignStyles(textAlign)}
   ${({ textColor = "foreground" }) => textColor && textColorStyles(textColor)};
   ${({ fullWidth }) => fullWidth && "width: 100%;"}
