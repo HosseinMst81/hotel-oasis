@@ -1,10 +1,7 @@
 import type { FC } from "react";
 import styled from "styled-components";
 import DesignTokensTestDashboard from "../design/components/test/DesignTokensTestDashboard";
-
-const Container = styled.div`
-  padding: 2rem;
-`;
+import Container from "../design/primitives/Container/Container";
 
 const Title = styled.h1`
   font-size: 2.4rem;
@@ -15,7 +12,7 @@ const Title = styled.h1`
 
 const Dashboard: FC = () => {
   return (
-    <Container>
+    <Container p={5}>
       <Title>Dashboard</Title>
       <p>Welcome to the hotel management dashboard</p>
       <DesignTokensTestDashboard/>

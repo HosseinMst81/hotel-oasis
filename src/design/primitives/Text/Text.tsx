@@ -17,6 +17,8 @@ import { fontStylesMap } from "../../shared/styles/fontStylesMap";
 import { leadingMap } from "../../shared/styles/leadingMaps";
 import { textColorStyles } from "../../shared/styles/textColorStyles";
 import { fontWeight } from "../../tokens";
+import { marginStyles } from "../../shared/styles/marginStylesMap";
+import { paddingStyles } from "../../shared/styles/paddingStylesMap";
 
 const StyledText = styled.p<TextProps>`
   ${({ size = "base" }) => sizeMap[size]}
@@ -26,6 +28,8 @@ const StyledText = styled.p<TextProps>`
   ${({ textAlign = "left" }) => textAlignStyles(textAlign)}
   ${({ textColor = "foreground" }) => textColor && textColorStyles(textColor)};
   ${({ fullWidth }) => fullWidth && "width: 100%;"}
+  ${(props) => marginStyles(props)}
+  ${(props) => paddingStyles(props)}
 
   margin: 0;
 `;
