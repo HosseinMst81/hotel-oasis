@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router";
-import GlobalStyles from "./styles/GlobalStyles";
+import GlobalStyles from "./design/GlobalStyles";
 import { Toaster } from "react-hot-toast";
 import AppLayout from "./layouts/AppLayout";
 import AuthLayout from "./layouts/AuthLayout";
