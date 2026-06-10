@@ -7,6 +7,7 @@ import type {
   HasColorScheme,
   HasSize,
   HasTransition,
+  HasDisabled,
 } from "../../shared/capabilities";
 
 
@@ -19,6 +20,7 @@ export interface ButtonProps
     HasColorScheme,
     HasMargin,
     HasAppearance,
+    HasDisabled,
     HasPadding {
   children: React.ReactNode;
 }

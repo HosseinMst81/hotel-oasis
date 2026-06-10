@@ -38,9 +38,10 @@ const StyledButton = styled.button<ButtonProps>`
 export const Button: React.FC<ButtonProps> = ({
   children,
   loading,
+  disabled,
   ...rest
 }) => {
   return (
-    <StyledButton py={3} px={5} {...rest}>{loading ? <Loading /> : children}</StyledButton>
+    <StyledButton disabled={disabled} py={3} px={5} {...rest}>{loading ? <Loading /> : children}</StyledButton>
   );
 };
