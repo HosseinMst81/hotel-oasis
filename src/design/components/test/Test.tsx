@@ -1,8 +1,8 @@
 import { Button } from "../../primitives";
 import Container from "../../primitives/Container/Container";
+import { Divider } from "../../primitives/Divider/Divider";
 import Inline from "../../primitives/Inline/Inline";
 import Loading from "../../primitives/Loading/Loading";
-
 const Test = () => {
   return (
     <div>
@@ -17,6 +17,10 @@ const Test = () => {
           <Button appearance="link" colorScheme="info">Info</Button>
           <Button appearance="outline" colorScheme="dark">Dark</Button>
           <Button appearance="ghost" colorScheme="light">Light</Button>
+          <Divider/>
+          <Divider/>
+          <Divider/>
+          <Divider/>
           <Button appearance="ghost" colorScheme="dark">dark</Button>
         </Inline>
       </Container>
