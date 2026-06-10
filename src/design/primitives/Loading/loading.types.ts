@@ -1,5 +1,5 @@
-import type { HasClassName, HasColor } from "../../shared/capabilities";
+import type { HasClassName, HasColorScheme } from "../../shared/capabilities";
 import type { HasLoaderSize } from "../../shared/capabilities/HasLoaderSize";
 import type { HasLoaderSpeed } from "../../shared/capabilities/HasLoaderSpeed";
 
-export interface LoadingProps extends HasLoaderSize,HasLoaderSpeed, HasColor , HasClassName {}
+export interface LoadingProps extends HasLoaderSize,HasLoaderSpeed, HasColorScheme , HasClassName {}

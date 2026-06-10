@@ -15,6 +15,8 @@ export const loaderStylesMap = (
   speed: keyof typeof loaderSpeeds = "normal",
   scheme: ColorScheme = "primary"
 ) => css`
+  cursor: wait;
+  pointer-events: none;
   width: ${loaderSizes[size]};
   height: ${loaderSizes[size]};
   border: 3px solid color-mix(in oklch, ${colors[scheme]} 20%, transparent);
