@@ -7,6 +7,7 @@
  *
  * Pattern: styleMap[capabilityValue] → css`` fragment
  */
+export * from "./appearanceStyleMap"
 export * from "./colorSchemaMap";
 export * from "./disableStylesMap";
 export * from "./focusRingMap";

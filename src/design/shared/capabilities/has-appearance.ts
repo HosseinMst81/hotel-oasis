@@ -1,6 +1,5 @@
-export interface HasAppearance<
-  Appearance extends string = "solid" | "ghost" | "outline" | "subtle",
-> {
+export type Appearance = "solid" | "ghost" | "outline" | "subtle" | "link";
+export interface HasAppearance<T extends string = Appearance> {
   /** Visual appearance token such as solid, ghost, outline, or subtle. */
-  appearance?: Appearance;
+  appearance?: T;
 }

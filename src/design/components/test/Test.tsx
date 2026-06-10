@@ -12,11 +12,12 @@ const Test = () => {
           <Button px={5} colorScheme="primary">
             Primary
           </Button>
-          <Button colorScheme="secondary">Secondary</Button>
-          <Button colorScheme="error">Error</Button>
-          <Button colorScheme="info">Info</Button>
-          <Button colorScheme="dark">Dark</Button>
-          <Button colorScheme="light">Light</Button>
+          <Button appearance="solid" colorScheme="secondary">Secondary</Button>
+          <Button appearance="subtle" colorScheme="error">Error</Button>
+          <Button appearance="link" colorScheme="info">Info</Button>
+          <Button appearance="outline" colorScheme="dark">Dark</Button>
+          <Button appearance="ghost" colorScheme="light">Light</Button>
+          <Button appearance="ghost" colorScheme="dark">dark</Button>
         </Inline>
       </Container>
     </div>

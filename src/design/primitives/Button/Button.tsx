@@ -13,19 +13,20 @@
  */
 
 import styled from "styled-components";
-import type { ButtonProps } from "./button.types";
-import { colorSchemeStylesMap, roundedMap, sizeMap } from "../../shared/styles";
 import Loading from "../../../pages/Loading";
-import { transitionStyles } from "../../shared/styles/transitionStylesMap";
-import { paddingStyles } from "../../shared/styles/paddingStylesMap";
+import { appearanceStyleMap, roundedMap, sizeMap } from "../../shared/styles";
 import { marginStyles } from "../../shared/styles/marginStylesMap";
+import { paddingStyles } from "../../shared/styles/paddingStylesMap";
+import { transitionStyles } from "../../shared/styles/transitionStylesMap";
+import type { ButtonProps } from "./button.types";
 
 const StyledButton = styled.button<ButtonProps>`
   ${({ rounded = "none" }) => roundedMap[rounded]}
-  ${({ colorScheme = "primary" }) => colorSchemeStylesMap[colorScheme]}
   ${({ size = "base" }) => sizeMap[size]}
+  ${({ appearance = "solid", colorScheme = "primary" }) => appearanceStyleMap(appearance, colorScheme)}
   ${(props) => marginStyles(props)}
   ${(props) => paddingStyles(props)}
+
   ${({
     transitionDelay = "none",
     transitionDuration = "fast",

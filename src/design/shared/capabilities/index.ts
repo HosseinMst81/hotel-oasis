@@ -1,4 +1,7 @@
 export * from "./has-appearance";
+export * from "./has-margin";
+export * from "./has-padding";
+export * from "./has-transition";
 export * from "./has-error";
 export * from "./has-children";
 export * from "./has-class-name";
