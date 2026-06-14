@@ -35,7 +35,7 @@ const Test = () => {
           <Heading level={1} textColor="success" textAlign="center" mb={4}>
             Welcome
           </Heading>
-          <Text size="lg" textColor="muted" textAlign="justify" mt={2}>
+          <Text fontFamily="primary" fontWeight="black" fontSize="xl" textColor="muted" textAlign="justify" mt={2}>
             This is a paragraph with custom size and alignment.
           </Text>
           <Image src="/src/assets/hero.png" alt="Example" width={300} height={200} objectFit="cover"  mb={2} />

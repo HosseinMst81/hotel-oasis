@@ -8,9 +8,11 @@ import { paddingStyles } from "../../shared/styles/paddingStylesMap";
 import type { JSX } from "react";
 import { textAlignStyles } from "../../shared/styles/alignmentStylesMap";
 import { textColorStyles } from "../../shared/styles/textColorStyles";
+import type { HasFontFamily } from "../../shared/capabilities/has-font-family";
+import { fontStylesMap } from "../../shared/styles/fontStylesMap";
 
 export interface HeadingProps
-  extends HasTextColor, HasTextAlign, HasMargin, HasPadding {
+  extends HasTextColor, HasTextAlign, HasMargin, HasPadding, HasFontFamily {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   children: React.ReactNode;
 }
@@ -18,6 +20,7 @@ export interface HeadingProps
 const StyledHeading = styled.h1<HeadingProps>`
   margin: 0;
   line-height: 1.2;
+  ${({ fontFamily = "base" }) => fontStylesMap[fontFamily]}
   ${({ level }) => {
     switch (level) {
       case 1:
@@ -35,7 +38,7 @@ const StyledHeading = styled.h1<HeadingProps>`
     }
   }}
   ${({ textAlign = "left" }) => textAlignStyles(textAlign)}
-  ${({ textColor = "foreground" }) => textColor && textColorStyles(textColor)};
+  ${({ textColor }) => textColor && textColorStyles(textColor)};
   ${(props) => marginStyles(props)}
   ${(props) => paddingStyles(props)}
 `;
