@@ -1,5 +1,5 @@
 import React from "react";
-import Text from "../../primitives/Text/Text";
+import Text from "../../design/primitives/Text/Text";
 
 
 const EmptyState: React.FC = () => {

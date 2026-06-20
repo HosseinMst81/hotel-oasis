@@ -8,8 +8,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Box, Flex, Stack, Text, Heading, Button, Badge, Divider } from '../../primitives';
-import type { StandardColorScheme } from '../../shared/capabilities';
+import { Box, Flex, Stack, Text, Heading, Button, Badge, Divider } from '../../design/primitives';
+import type { StandardColorScheme } from '../../design/shared/capabilities';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // AVATAR (shared sub-primitive — used internally by UserCard)

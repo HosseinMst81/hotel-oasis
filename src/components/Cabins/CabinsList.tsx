@@ -1,5 +1,5 @@
 import React from 'react';
-import EmptyState from '../../design/components/EmptyState/EmptyState';
+import EmptyState from '../EmptyState/EmptyState';
 import { Card } from '../../design/primitives/Card/Card';
 import { Divider } from '../../design/primitives/Divider/Divider';
 import { Heading } from '../../design/primitives/Heading/Heading';

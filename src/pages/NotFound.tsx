@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { Link } from "react-router";
 import styled from "styled-components";
-import EmptyState from "../design/components/EmptyState/EmptyState";
+import EmptyState from "../components/EmptyState/EmptyState";
 
 const Container = styled.div`
   display: flex;

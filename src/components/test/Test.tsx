@@ -1,12 +1,12 @@
-import { Button } from "../../primitives";
-import Container from "../../primitives/Container/Container";
-import { Divider } from "../../primitives/Divider/Divider";
-import { Heading } from "../../primitives/Heading/Heading";
-import { Image } from "../../primitives/Image/Image";
-import Inline from "../../primitives/Inline/Inline";
-import { Input } from "../../primitives/Input/Input";
-import Loading from "../../primitives/Loading/Loading";
-import Text from "../../primitives/Text/Text";
+import { Button } from "../../design/primitives";
+import Container from "../../design/primitives/Container/Container";
+import { Divider } from "../../design/primitives/Divider/Divider";
+import { Heading } from "../../design/primitives/Heading/Heading";
+import { Image } from "../../design/primitives/Image/Image";
+import Inline from "../../design/primitives/Inline/Inline";
+import { Input } from "../../design/primitives/Input/Input";
+import Loading from "../../design/primitives/Loading/Loading";
+import Text from "../../design/primitives/Text/Text";
 const Test = () => {
   return (
     <div>

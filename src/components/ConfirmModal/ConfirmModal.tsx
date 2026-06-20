@@ -14,8 +14,8 @@
 import React, { useEffect, useId, useRef } from 'react';
 import styled from 'styled-components';
 
-import { Box, Flex, Stack, Text, Heading, Button, Icon } from '../../primitives';
-import type { StandardColorScheme } from '../../shared/capabilities';
+import { Box, Flex, Stack, Text, Heading, Button, Icon } from '../../design/primitives';
+import type { StandardColorScheme } from '../../design/shared/capabilities';
 
 // ─── Overlay ──────────────────────────────────────────────────────────────────
 // The only styled-component here — it handles positioning, not visuals.
