@@ -19,11 +19,13 @@ import Users from "./pages/Users";
 import UserForm from "./pages/UserForm";
 import NotFound from "./pages/NotFound";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 function App() {
   return (
     <>
       <QueryClientProvider client={new QueryClient()}>
+        <ReactQueryDevtools initialIsOpen={false} />
       {/* <ThemeProvider theme={theme}> */}
       <GlobalStyles />
       {/* <AuthProvider> */}
