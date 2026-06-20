@@ -18,11 +18,12 @@ import Profile from "./pages/Profile";
 import Users from "./pages/Users";
 import UserForm from "./pages/UserForm";
 import NotFound from "./pages/NotFound";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
   return (
     <>
-      {/* <QueryClientProvider client={queryClient}> */}
+      <QueryClientProvider client={new QueryClient()}>
       {/* <ThemeProvider theme={theme}> */}
       <GlobalStyles />
       {/* <AuthProvider> */}
@@ -54,7 +55,7 @@ function App() {
       {/* </AuthProvider> */}
       <Toaster position="top-right" />
       {/* </ThemeProvider> */}
-      {/* </QueryClientProvider> */}
+      </QueryClientProvider>
     </>
   );
 }

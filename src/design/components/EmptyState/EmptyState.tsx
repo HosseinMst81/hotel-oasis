@@ -1,9 +1,9 @@
 import React from "react";
-import Test from "../test/Test";
+import Text from "../../primitives/Text/Text";
 
 
 const EmptyState: React.FC = () => {
-  return <Test/>
+  return <Text>Empty State</Text>;
 };
 
 export default EmptyState;
