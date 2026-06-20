@@ -377,3 +377,23 @@ export const Constants = {
     Enums: {},
   },
 } as const
+
+export type AppSettingRow = Database["public"]["Tables"]["app_settings"]["Row"];
+export type AppSettingInsert = Database["public"]["Tables"]["app_settings"]["Insert"];
+export type AppSettingUpdate = Database["public"]["Tables"]["app_settings"]["Update"];
+
+export type BookingRow = Database["public"]["Tables"]["bookings"]["Row"];
+export type BookingInsert = Database["public"]["Tables"]["bookings"]["Insert"];
+export type BookingUpdate = Database["public"]["Tables"]["bookings"]["Update"];
+
+export type CabinRow = Database["public"]["Tables"]["cabins"]["Row"];
+export type CabinInsert = Database["public"]["Tables"]["cabins"]["Insert"];
+export type CabinUpdate = Database["public"]["Tables"]["cabins"]["Update"];
+
+export type GuestRow = Database["public"]["Tables"]["guests"]["Row"];
+export type GuestInsert = Database["public"]["Tables"]["guests"]["Insert"];
+export type GuestUpdate = Database["public"]["Tables"]["guests"]["Update"];
+
+export type UserRow = Database["public"]["Tables"]["users"]["Row"];
+export type UserInsert = Database["public"]["Tables"]["users"]["Insert"];
+export type UserUpdate = Database["public"]["Tables"]["users"]["Update"];

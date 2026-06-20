@@ -1,10 +1,5 @@
 import { supabase } from "../lib/supabaseClient";
-import type { Database } from "../types/database.types";
-
-
-type CabinRow = Database["public"]["Tables"]["cabins"]["Row"];
-type CabinInsert = Database["public"]["Tables"]["cabins"]["Insert"];
-type CabinUpdate = Database["public"]["Tables"]["cabins"]["Update"];
+import type { CabinRow, CabinInsert, CabinUpdate } from "../types/database.types";
 
 type GetAllParams = Partial<{
   name: string;

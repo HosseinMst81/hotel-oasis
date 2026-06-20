@@ -1,9 +1,5 @@
 import { supabase } from "../lib/supabaseClient";
-import type { Database } from "../types/database.types";
-
-type GuestsRow = Database["public"]["Tables"]["guests"]["Row"];
-type GuestsInsert = Database["public"]["Tables"]["guests"]["Insert"];
-type GuestsUpdate = Database["public"]["Tables"]["guests"]["Update"];
+import type { GuestRow, GuestInsert, GuestUpdate } from "../types/database.types";
 
 type GetAllParams = Partial<{
   full_name: string;
@@ -13,7 +9,7 @@ type GetAllParams = Partial<{
 }>;
 
 export const guestsService = {
-  async getAll(filters?: GetAllParams): Promise<GuestsRow[]> {
+  async getAll(filters?: GetAllParams): Promise<GuestRow[]> {
     let query = supabase.from("guests").select("*");
 
     if (filters?.full_name) query = query.ilike("full_name", `%${filters.full_name}%`);
@@ -31,7 +27,7 @@ export const guestsService = {
     return data;
   },
 
-  async getById(guestId: string): Promise<GuestsRow> {
+  async getById(guestId: string): Promise<GuestRow> {
     const { data, error } = await supabase
       .from("guests")
       .select("*")
@@ -43,7 +39,7 @@ export const guestsService = {
     return data;
   },
 
-  async create(payload: GuestsInsert): Promise<GuestsRow> {
+  async create(payload: GuestInsert): Promise<GuestRow> {
     const { data, error } = await supabase
       .from("guests")
       .insert(payload)
@@ -55,7 +51,7 @@ export const guestsService = {
     return data;
   },
 
-  async update(guestId: string, payload: GuestsUpdate): Promise<GuestsRow> {
+  async update(guestId: string, payload: GuestUpdate): Promise<GuestRow> {
     const { data, error } = await supabase
       .from("guests")
       .update(payload)

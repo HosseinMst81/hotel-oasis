@@ -1,9 +1,5 @@
 import { supabase } from "../lib/supabaseClient";
-import type { Database } from "../types/database.types";
-
-export type BookingRow = Database["public"]["Tables"]["bookings"]["Row"];
-export type BookingInsert = Database["public"]["Tables"]["bookings"]["Insert"];
-export type BookingUpdate = Database["public"]["Tables"]["bookings"]["Update"];
+import type { BookingRow, BookingInsert, BookingUpdate } from "../types/database.types";
 
 type GetAllParams = Partial<{
   guest_id: string;
