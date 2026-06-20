@@ -1,9 +1,9 @@
 import { supabase } from "../lib/supabaseClient";
-import type { Database } from "../types/database.types";
-
-type AppSettingsRow = Database["public"]["Tables"]["app_settings"]["Row"];
-type AppSettingsInsert = Database["public"]["Tables"]["app_settings"]["Insert"];
-type AppSettingsUpdate = Database["public"]["Tables"]["app_settings"]["Update"];
+import type {
+  AppSettingRow,
+  AppSettingInsert,
+  AppSettingUpdate,
+} from "../types/database.types";
 
 type GetAllParams = Partial<{
   id: number;
@@ -14,15 +14,21 @@ type GetAllParams = Partial<{
 }>;
 
 export const appSetttingsService = {
-  async getAll(filters?: GetAllParams): Promise<AppSettingsRow[]> {
+  async getAll(filters?: GetAllParams): Promise<AppSettingRow[]> {
     let query = supabase.from("app_settings").select("*");
 
     if (filters?.id !== undefined) query = query.eq("id", filters.id);
     if (filters?.max_guests_per_booking !== undefined)
-      query = query.eq("max_guests_per_booking", filters.max_guests_per_booking);
-    if (filters?.min_nights !== undefined) query = query.eq("min_nights", filters.min_nights);
-    if (filters?.max_nights !== undefined) query = query.eq("max_nights", filters.max_nights);
-    if (filters?.breakfast_price !== undefined) query = query.eq("breakfast_price", filters.breakfast_price);
+      query = query.eq(
+        "max_guests_per_booking",
+        filters.max_guests_per_booking
+      );
+    if (filters?.min_nights !== undefined)
+      query = query.eq("min_nights", filters.min_nights);
+    if (filters?.max_nights !== undefined)
+      query = query.eq("max_nights", filters.max_nights);
+    if (filters?.breakfast_price !== undefined)
+      query = query.eq("breakfast_price", filters.breakfast_price);
 
     const { data, error } = await query.order("id");
 
@@ -31,7 +37,7 @@ export const appSetttingsService = {
     return data;
   },
 
-  async getById(id: number): Promise<AppSettingsRow> {
+  async getById(id: number): Promise<AppSettingRow> {
     const { data, error } = await supabase
       .from("app_settings")
       .select("*")
@@ -43,7 +49,7 @@ export const appSetttingsService = {
     return data;
   },
 
-  async create(payload: AppSettingsInsert): Promise<AppSettingsRow> {
+  async create(payload: AppSettingInsert): Promise<AppSettingRow> {
     const { data, error } = await supabase
       .from("app_settings")
       .insert(payload)
@@ -55,7 +61,7 @@ export const appSetttingsService = {
     return data;
   },
 
-  async update(id: number, payload: AppSettingsUpdate): Promise<AppSettingsRow> {
+  async update(id: number, payload: AppSettingUpdate): Promise<AppSettingRow> {
     const { data, error } = await supabase
       .from("app_settings")
       .update(payload)
@@ -74,4 +80,3 @@ export const appSetttingsService = {
     if (error) throw new Error(error.message);
   },
 };
-
