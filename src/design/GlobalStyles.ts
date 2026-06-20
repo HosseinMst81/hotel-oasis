@@ -8,13 +8,14 @@ const GlobalStyles = createGlobalStyle`
   padding: 0;
 }
 
-:root {
-  --color-black:#000000;
-  --color-white:#ffffff;
+:root { 
+  --color-black:#fff;
+  --color-white:#000;
+
   /* ===== Colors (Extracted from The Wild Oasis Logo) ===== */
   /* Brand Palettes in oklch() */
   --color-brand-primary: oklch(0.38 0.06 150);     /* Deep Forest Green #2b4233 */
-  --color-brand-secondary: oklch(0.85 0.08 85);    /* Warm Cabin Cream/Gold #e0ca9b */
+  --color-brand-secondary: oklch(0.6958 0.0664 66.77);    /* Warm Cabin Cream/Gold #ffc342 */
   --color-brand-accent: oklch(0.25 0.05 60);       /* Earthy Cabin Brown #3a2512 */
   
   /* System Status Colors */
@@ -115,6 +116,7 @@ const GlobalStyles = createGlobalStyle`
 
   /* Semantic Border Colors */
   --color-border-base: color-mix(in oklch, var(--color-brand-foreground) 15%, transparent);
+  --color-border-subtle: color-mix(in oklch, #a1a1a1 15%, transparent);
   --color-border-error: var(--color-brand-error);
   --color-border-success: var(--color-brand-success);
 
@@ -177,10 +179,13 @@ const GlobalStyles = createGlobalStyle`
   /* ===== Custom Loading Indicator Config ===== */
   --loader-size: 40px;
   --loader-speed: 1.2s;
+
 }
 
 /* ===== Dark Mode Theme Overrides ===== */
 .dark {
+  --color-white:#fff;
+  --color-black:#000;
   /* Invert contrast and drop brightness while keeping nature/earth tones */
   --color-brand-background: oklch(0.14 0.015 150);  /* Deep muted forest background */
   --color-brand-foreground: oklch(0.94 0.02 85);    /* Soft warm cream text */
@@ -260,7 +265,6 @@ a {
 
 a:hover {
   color: var(--color-primary-hover);
-  text-decoration: underline;
 }
 
 :where(a, button, input, select, textarea, [tabindex]):focus-visible {
