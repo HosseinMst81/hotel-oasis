@@ -27,6 +27,6 @@ export interface ButtonProps
     HasAppearance,
     HasDisabled,
     HasPadding {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 

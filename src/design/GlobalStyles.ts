@@ -9,8 +9,6 @@ const GlobalStyles = createGlobalStyle`
 }
 
 :root { 
-  --color-black:#fff;
-  --color-white:#000;
 
   /* ===== Colors (Extracted from The Wild Oasis Logo) ===== */
   /* Brand Palettes in oklch() */
@@ -184,8 +182,6 @@ const GlobalStyles = createGlobalStyle`
 
 /* ===== Dark Mode Theme Overrides ===== */
 .dark {
-  --color-white:#fff;
-  --color-black:#000;
   /* Invert contrast and drop brightness while keeping nature/earth tones */
   --color-brand-background: oklch(0.14 0.015 150);  /* Deep muted forest background */
   --color-brand-foreground: oklch(0.94 0.02 85);    /* Soft warm cream text */

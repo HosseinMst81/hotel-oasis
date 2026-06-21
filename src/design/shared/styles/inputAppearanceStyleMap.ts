@@ -1,6 +1,6 @@
 import { css } from "styled-components";
 import { colors, interactiveColors, type ColorScheme } from "../../tokens";
-import type { Appearance } from "../../shared/capabilities/has-appearance";
+import type { Appearance } from "../capabilities/has-appearance";
 
 type InputAppearance = Extract<Appearance, "solid" | "ghost" | "outline" | "subtle" | "link">;
 

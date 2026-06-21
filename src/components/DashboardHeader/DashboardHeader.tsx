@@ -14,7 +14,7 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
-import { Box, Flex, Stack, Text, Heading, Button, Badge } from '../../design/primitives';
+import { Box, Flex, Stack, Text, Heading, Button } from '../../design/primitives';
 
 // ─── Sticky wrapper — layout only, no visual opinions ────────────────────────
 

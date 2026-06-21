@@ -2,7 +2,6 @@ import type {
   HasClassName,
   HasMargin,
   HasPadding,
-  HasSize,
 } from "../../shared/capabilities";
 import type { HasFontFamily } from "../../shared/capabilities/has-font-family";
 import type { HasFontSize } from "../../shared/capabilities/has-font-size";
