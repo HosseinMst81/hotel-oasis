@@ -1,11 +1,28 @@
-import type { HasSize, HasError, HasMargin, HasPadding } from "../../shared/capabilities";
-import type { HasfullWidth } from "../../shared/capabilities/has-full-width";
+import type React from "react";
+
+import type {
+  HasAppearance,
+  HasColorScheme,
+  HasDisabled,
+  HasError,
+  HasLoading,
+  HasMargin,
+  HasPadding,
+  HasRounded,
+  HasSize,
+  HasTransition,
+} from "../../shared/capabilities";
 
 export interface InputProps
   extends
-    HasSize,
+    Omit<React.ComponentPropsWithoutRef<"input">, "size">,  // <-- size
+    HasAppearance,
+    HasColorScheme,
+    HasDisabled,
     HasError,
-    HasfullWidth,
+    HasLoading,
     HasMargin,
     HasPadding,
-    React.InputHTMLAttributes<HTMLInputElement> {}
+    HasRounded,
+    HasSize,
+    HasTransition {}

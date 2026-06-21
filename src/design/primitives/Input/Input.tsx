@@ -1,15 +1,48 @@
 import styled from "styled-components";
-import { inputStyles } from "../../shared/styles/input-styles";
+import { appearanceStyleMap, roundedMap, sizeMap } from "../../shared/styles";
 import { marginStyles } from "../../shared/styles/marginStylesMap";
 import { paddingStyles } from "../../shared/styles/paddingStylesMap";
+import { transitionStyles } from "../../shared/styles/transitionStylesMap";
+import { disabledStyles } from "../../shared/styles/disableStylesMap";
+
 import type { InputProps } from "./input.types";
 
 const StyledInput = styled.input<InputProps>`
-  ${(props) => inputStyles({ size: props.size, error: props.error, fullWidth: props.fullWidth })}
+  ${({ rounded = "md" }) => roundedMap[rounded as keyof typeof roundedMap]}
+  ${({ size = "base" }) => sizeMap[size as keyof typeof sizeMap]}
+
+  ${({ appearance = "subtle", colorScheme = "primary" }) =>
+    appearanceStyleMap(appearance, colorScheme)}
+
   ${(props) => marginStyles(props)}
   ${(props) => paddingStyles(props)}
+
+  ${({
+    transitionDelay = "none",
+    transitionDuration = "normal",
+    transitionTiming = "linear",
+  }) =>
+    transitionStyles({ transitionDelay, transitionDuration, transitionTiming })}
+
+  ${({ disabled }) => disabled && disabledStyles}
 `;
 
-export function Input({ ...props }: InputProps) {
-  return <StyledInput {...props} />;
-}
+export const Input: React.FC<InputProps> = ({
+  loading,
+  disabled,
+  error,
+  ...rest
+}) => {
+  return (
+    <StyledInput
+      pr={5}
+      pl={10}
+      aria-busy={loading}
+      aria-disabled={disabled}
+      disabled={disabled}
+      aria-invalid={error ? true : undefined}
+      {...rest}
+    />
+  );
+};
+
