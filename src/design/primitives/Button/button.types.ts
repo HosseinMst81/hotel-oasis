@@ -8,11 +8,16 @@ import type {
   HasSize,
   HasTransition,
   HasDisabled,
+  HasLeftIcon,
+  HasRightIcon,
 } from "../../shared/capabilities";
+
 
 
 export interface ButtonProps
   extends
+    HasLeftIcon,
+    HasRightIcon,
     HasLoading,
     HasRounded,
     HasSize,
@@ -24,3 +29,4 @@ export interface ButtonProps
     HasPadding {
   children: React.ReactNode;
 }
+

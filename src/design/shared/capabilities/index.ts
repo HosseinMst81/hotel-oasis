@@ -11,4 +11,7 @@ export * from "./has-loading";
 export * from "./has-rounded";
 export * from "./has-size";
 export * from "./has-variant";
+export * from "./has-left-icon";
+export * from "./has-right-icon";
 export * from "./polymorphic";
+

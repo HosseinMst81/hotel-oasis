@@ -23,7 +23,8 @@ import type { ButtonProps } from "./button.types";
 const StyledButton = styled.button<ButtonProps>`
   ${({ rounded = "none" }) => roundedMap[rounded]}
   ${({ size = "base" }) => sizeMap[size]}
-  ${({ appearance = "solid", colorScheme = "primary" }) => appearanceStyleMap(appearance, colorScheme)}
+  ${({ appearance = "solid", colorScheme = "primary" }) =>
+    appearanceStyleMap(appearance, colorScheme)}
   ${(props) => marginStyles(props)}
   ${(props) => paddingStyles(props)}
 
@@ -33,15 +34,31 @@ const StyledButton = styled.button<ButtonProps>`
     transitionTiming = "easeInOut",
   }) =>
     transitionStyles({ transitionDelay, transitionDuration, transitionTiming })}
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Button: React.FC<ButtonProps> = ({
   children,
+  leftIcon,
+  rightIcon,
   loading,
   disabled,
   ...rest
 }) => {
   return (
-    <StyledButton disabled={disabled} py={3} px={5} {...rest}>{loading ? <Loading /> : children}</StyledButton>
+    <StyledButton disabled={disabled} py={3} px={5} {...rest}>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          {leftIcon ? <span>{leftIcon}</span> : null}
+          {children}
+          {rightIcon ? <span>{rightIcon}</span> : null}
+        </>
+      )}
+    </StyledButton>
   );
 };

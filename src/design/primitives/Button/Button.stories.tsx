@@ -46,6 +46,15 @@ const meta: Meta<typeof Button> = {
       control: 'boolean',
       description: 'Disables the button',
     },
+    leftIcon: {
+      control: false,
+      description: 'Optional icon rendered on the left',
+    },
+    rightIcon: {
+      control: false,
+      description: 'Optional icon rendered on the right',
+    },
+
     // Margin props
     m: { control: 'select', options: [0,1,2,3,4,5,6], description: 'Margin on all sides' },
     mt: { control: 'select', options: [0,1,2,3,4,5,6], description: 'Margin top' },
@@ -164,6 +173,16 @@ export const Large: Story = {
 };
 
 // Playground – all props controllable
+export const IconButtons: Story = {
+  args: {
+    children: 'With icons',
+    appearance: 'solid',
+    colorScheme: 'primary',
+    leftIcon: '←',
+    rightIcon: '→',
+  },
+};
+
 export const Playground: Story = {
   args: {
     children: 'Playground Button',
@@ -180,3 +199,4 @@ export const Playground: Story = {
     transitionTiming: 'easeInOut',
   },
 };
+
