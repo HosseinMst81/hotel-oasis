@@ -15,7 +15,7 @@ import type {
 
 
 export interface ButtonProps
-  extends
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>, // For native button actions like : onClick , onMouseHover ,...
     HasLeftIcon,
     HasRightIcon,
     HasLoading,
