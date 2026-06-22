@@ -1,4 +1,10 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import styled, { css } from "styled-components";
 import {
   FiSearch,
@@ -24,9 +30,12 @@ import {
   getSkeletonRows,
 } from "../../utils/DataTable.utils";
 import type { DataTableProps } from "./DataTable.types";
-import { Input } from "../../design/primitives";
+import { Badge, Input } from "../../design/primitives";
 import Text from "../../design/primitives/Text/Text";
 import Inline from "../../design/primitives/Inline/Inline";
+import { fontWeight } from "../../design/tokens";
+import { Heading } from "../../design/primitives/Heading/Heading";
+import Stack from "../../design/primitives/Stack/Stack";
 
 // ─── STYLED COMPONENTS ───────────────────────────────────────────────────────
 
@@ -186,8 +195,11 @@ const TableHeader = styled.thead`
   color: var(--color-text-secondary);
 `;
 
-const HeaderRow = styled.tr``;
-
+const HeaderRow = styled.tr`
+  font-size: var(--text-xs);
+  color: var(--color-brand-secondary);
+  font-weight: 700;
+`;
 const ThBase = styled.th<{ $border?: boolean; $highlight?: boolean }>`
   padding: var(--space-4) var(--space-6);
   border-right: ${(props) =>
@@ -257,15 +269,11 @@ const TdBase = styled.td<{
   z-index: ${(props) => (props.$sticky ? zIndex.base : "auto")};
 
   /* Update sticky cell background on row hover */
-  tr:hover & {
-    background: ${(props) =>
-      props.$sticky ? "var(--color-brand-background)" : "inherit"};
-  }
+
   tr[data-selected="true"] &:not([data-sticky]) {
     /* Don't override sticky right column background if selected */
   }
 `;
-
 const StatusBadge = styled.span<{ $tone: string }>`
   display: inline-flex;
   border-radius: 9999px;
@@ -333,12 +341,6 @@ const Pagination = styled.div`
   border-top: 1px solid var(--color-border-base);
 `;
 
-const PaginationControls = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-`;
-
 const ColumnVisibilityMenu = styled.div`
   position: absolute;
   top: 110%;
@@ -351,14 +353,6 @@ const ColumnVisibilityMenu = styled.div`
   box-shadow: var(--shadow-lg);
   z-index: ${zIndex.dropdown};
 `;
-
-// ─── HELPERS ─────────────────────────────────────────────────────────────────
-
-const STATUS_TONES: Record<string, string> = {
-  available: "var(--color-brand-success)",
-  booked: "var(--color-brand-warning)",
-  maintenance: "var(--color-brand-error)",
-};
 
 // ─── MAIN COMPONENT ──────────────────────────────────────────────────────────
 
@@ -560,11 +554,8 @@ export function DataTable<TData extends Record<string, unknown>>(
               {visibleColumns.map((col) => {
                 const sortIndex = sort.findIndex((s) => s.field === col.field);
                 const activeSort = sortIndex > -1 ? sort[sortIndex] : null;
-                const isHighlighted =
-                  col.field === "base_price" || col.field === "price"; // Design highlight
-
                 return (
-                  <ThBase key={col.field} $border $highlight={isHighlighted}>
+                  <ThBase key={col.field} $border>
                     {col.sortable ? (
                       <ThSortButton
                         type="button"
@@ -635,14 +626,7 @@ export function DataTable<TData extends Record<string, unknown>>(
                   colSpan={visibleColumns.length + (rowActions ? 2 : 1)}
                   style={{ padding: "60px 0", textAlign: "center" }}
                 >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      gap: 16,
-                    }}
-                  >
+                  <Stack align="center">
                     <div
                       style={{
                         fontSize: 40,
@@ -651,34 +635,15 @@ export function DataTable<TData extends Record<string, unknown>>(
                     >
                       {emptyState.icon}
                     </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: 4,
-                      }}
-                    >
-                      <h3
-                        style={{
-                          margin: 0,
-                          fontFamily: "var(--font-primary)",
-                          color: "var(--color-brand-primary)",
-                          fontSize: "var(--text-lg)",
-                        }}
-                      >
+                    <Stack align="center">
+                      <Heading textAlign="center" level={2}>
                         {emptyState.title}
-                      </h3>
-                      <p
-                        style={{
-                          margin: 0,
-                          color: "var(--color-text-secondary)",
-                          fontSize: "var(--text-sm)",
-                        }}
-                      >
+                      </Heading>
+                      <Text as="p" textColor="muted" fontFamily="primary">
                         {emptyState.description}
-                      </p>
-                    </div>
-                  </div>
+                      </Text>
+                    </Stack>
+                  </Stack>
                 </TdBase>
               </tr>
             ) : (
@@ -715,15 +680,7 @@ export function DataTable<TData extends Record<string, unknown>>(
                           col.render(row)
                         ) : col.type === "badge" ? (
                           row[col.field] ? (
-                            <StatusBadge
-                              $tone={
-                                STATUS_TONES[
-                                  String(row[col.field]).toLowerCase()
-                                ] || "var(--color-brand-muted)"
-                              }
-                            >
-                              {String(row[col.field])}
-                            </StatusBadge>
+                            <Badge>{String(row[col.field])}</Badge>
                           ) : (
                             "—"
                           )
@@ -815,7 +772,7 @@ export function DataTable<TData extends Record<string, unknown>>(
                 style={{
                   paddingInline: "1.7rem",
                   paddingBlock: "1rem",
-                  cursor:'initial',
+                  cursor: "initial",
                   backgroundColor:
                     p === pagination.page
                       ? "var(--color-brand-primary)"
@@ -844,3 +801,24 @@ export function DataTable<TData extends Record<string, unknown>>(
 }
 
 export default DataTable;
+
+export const TableHeaderText = ({
+  children,
+  props,
+}: {
+  children: ReactNode;
+  props?: any;
+}) => {
+  return (
+    <Text
+      textColor="muted"
+      fontFamily="primary"
+      fontWeight="light"
+      fontSize="sm"
+      letterSpacing="widest"
+      {...props}
+    >
+      {children}
+    </Text>
+  );
+};

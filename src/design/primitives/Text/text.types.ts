@@ -14,17 +14,19 @@ import type { HasFontWeight } from "../../shared/capabilities/has-weight";
 
 export interface TextProps
   extends
+    React.HTMLAttributes<HTMLDivElement>,
     HasFontSize,
     HasTextColor,
     HasFontFamily,
     HasFontWeight,
+    HasLineHeight,
+    HasLetterSpacing,
     HasfullWidth,
     HasMargin,
     HasPadding,
     HasClassName,
-    HasLetterSpacing,
-    HasLineHeight,
     HasLayout {
   /** The content of the text element. */
+  as?: "p" | "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   children: React.ReactNode;
 }
