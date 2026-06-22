@@ -10,12 +10,11 @@ import type { InputProps } from "./input.types";
 const StyledInput = styled.input<InputProps>`
   ${({ rounded = "md" }) => roundedMap[rounded as keyof typeof roundedMap]}
   ${({ size = "base" }) => sizeMap[size as keyof typeof sizeMap]}
-
   ${({ appearance = "subtle", colorScheme = "primary" }) =>
     appearanceStyleMap(appearance, colorScheme)}
-
   ${(props) => marginStyles(props)}
   ${(props) => paddingStyles(props)}
+  ${(fullWidth) => fullWidth && `width: 100%;`}
 
   ${({
     transitionDelay = "none",

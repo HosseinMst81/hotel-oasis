@@ -46,6 +46,7 @@ const StyledButton = styled.button<ButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+  gap:1rem;
 `;
 
 export const Button: React.FC<ButtonProps> = ({
@@ -57,7 +58,7 @@ export const Button: React.FC<ButtonProps> = ({
   ...rest
 }) => {
   return (
-    <StyledButton disabled={disabled} py={3} px={5} {...rest}>
+    <StyledButton disabled={disabled} py={3} px={5}  {...rest}>
       {loading ? (
         <Loading />
       ) : (

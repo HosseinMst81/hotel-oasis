@@ -16,7 +16,7 @@ export const appearanceStyleMap = (appearance: Appearance = 'solid', scheme: Col
   const hoverColor = getInteractiveVar(scheme, 'hover');
   const activeColor = getInteractiveVar(scheme, 'active');
   const focusColor = getInteractiveVar(scheme, 'focus');
-//   const outlineColor = getInteractiveVar(scheme, 'outline');
+  // const outlineColor = getInteractiveVar(scheme, 'outline');
   const disabledColor = getInteractiveVar(scheme, 'disabled');
 
   switch (appearance) {
@@ -71,7 +71,7 @@ export const appearanceStyleMap = (appearance: Appearance = 'solid', scheme: Col
         color: ${baseColor};
         border: 1px solid ${baseColor};
         &:hover:not(:disabled) {
-          background-color: ${baseColor};
+          background-color: color-mix(in oklch, ${baseColor} 90%, transparent);
           color: var(--color-white, white);
           border-color: ${hoverColor};
         }

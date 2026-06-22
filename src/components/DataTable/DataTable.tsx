@@ -33,7 +33,6 @@ import type { DataTableProps } from "./DataTable.types";
 import { Badge, Input } from "../../design/primitives";
 import Text from "../../design/primitives/Text/Text";
 import Inline from "../../design/primitives/Inline/Inline";
-import { fontWeight } from "../../design/tokens";
 import { Heading } from "../../design/primitives/Heading/Heading";
 import Stack from "../../design/primitives/Stack/Stack";
 
@@ -49,14 +48,6 @@ const TableWrapper = styled.div`
   position: relative;
 `;
 
-const Toolbar = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-5) var(--space-6);
-  border-bottom: 1px solid var(--color-border-base);
-`;
-
 const Title = styled.h2`
   font-family: var(--font-primary);
   font-size: var(--text-xl);
@@ -64,16 +55,6 @@ const Title = styled.h2`
   letter-spacing: -0.025em;
   color: var(--color-brand-primary);
   margin: 0;
-`;
-
-const ToolbarActions = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-`;
-
-const SearchContainer = styled.div`
-  position: relative;
 `;
 
 const SearchIcon = styled(FiSearch)`
@@ -274,17 +255,6 @@ const TdBase = styled.td<{
     /* Don't override sticky right column background if selected */
   }
 `;
-const StatusBadge = styled.span<{ $tone: string }>`
-  display: inline-flex;
-  border-radius: 9999px;
-  padding: 2px 10px;
-  font-size: 11px;
-  font-weight: 700;
-  background: ${(props) =>
-    `color-mix(in oklch, ${props.$tone} 10%, transparent)`};
-  color: ${(props) => props.$tone};
-`;
-
 const ActionCell = styled.div`
   display: flex;
   align-items: center;
@@ -429,12 +399,20 @@ export function DataTable<TData extends Record<string, unknown>>(
   return (
     <TableWrapper ref={rootRef}>
       {/* TOOLBAR */}
-      <Toolbar>
+      <Inline
+        px={5}
+        mt={5}
+        pb={2}
+        fullWidth
+        justify="space-between"
+        align="center"
+      >
         {title && <Title>{title}</Title>}
-        <ToolbarActions>
-          <SearchContainer>
+        <Inline spacing={4} justify="flex-end">
+          <div style={{ position: "relative" }}>
             <SearchIcon aria-hidden="true" />
             <Input
+              py={2}
               rounded="md"
               placeholder="Search cabins..."
               value={globalSearch}
@@ -446,20 +424,28 @@ export function DataTable<TData extends Record<string, unknown>>(
             />
             {globalSearch && (
               <Button
+                style={{
+                  position: "absolute",
+                  right: "0",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                }}
                 leftIcon={<FiX size={16} />}
                 appearance="link"
                 onClick={() => onGlobalSearchChange("")}
               ></Button>
             )}
-          </SearchContainer>
+          </div>
 
-          <div>
+          <div style={{}}>
             <Button
               colorScheme="primary"
               appearance="outline"
-              size="base"
+              size="xs"
               rounded="md"
-              leftIcon={<FiLayout />}
+              py={2}
+              px={3}
+              leftIcon={<FiLayout size={18}/>}
               onClick={() => setColMenuOpen(!colMenuOpen)}
             >
               Columns
@@ -506,8 +492,8 @@ export function DataTable<TData extends Record<string, unknown>>(
               </ColumnVisibilityMenu>
             )}
           </div>
-        </ToolbarActions>
-      </Toolbar>
+        </Inline>
+      </Inline>
 
       {/* TABLE */}
       <TableScroll>
@@ -801,24 +787,3 @@ export function DataTable<TData extends Record<string, unknown>>(
 }
 
 export default DataTable;
-
-export const TableHeaderText = ({
-  children,
-  props,
-}: {
-  children: ReactNode;
-  props?: any;
-}) => {
-  return (
-    <Text
-      textColor="muted"
-      fontFamily="primary"
-      fontWeight="light"
-      fontSize="sm"
-      letterSpacing="widest"
-      {...props}
-    >
-      {children}
-    </Text>
-  );
-};

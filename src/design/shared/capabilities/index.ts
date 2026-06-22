@@ -21,3 +21,4 @@ export * from "./has-shadow";
 export * from "./has-text-color";
 export * from "./has-letter-spacing";
 export * from "./has-line-height";
+export * from "./has-full-width";

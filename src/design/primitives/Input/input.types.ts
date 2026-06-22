@@ -5,6 +5,7 @@ import type {
   HasColorScheme,
   HasDisabled,
   HasError,
+  HasfullWidth,
   HasLoading,
   HasMargin,
   HasPadding,
@@ -24,5 +25,6 @@ export interface InputProps
     HasMargin,
     HasPadding,
     HasRounded,
+    HasfullWidth,
     HasSize,
     HasTransition {}

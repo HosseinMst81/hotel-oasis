@@ -13,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
   /* ===== Colors (Extracted from The Wild Oasis Logo) ===== */
   /* Brand Palettes in oklch() */
   --color-brand-primary: oklch(0.38 0.06 150);     /* Deep Forest Green #2b4233 */
-  --color-brand-secondary: oklch(0.6958 0.0664 66.77);    /* Warm Cabin Cream/Gold #ffc342 */
+  --color-brand-secondary: oklch(54.97% 0.138 49.57);   /* Warm Cabin Cream/Gold #ffc342 */
   --color-brand-accent: oklch(0.25 0.05 60);       /* Earthy Cabin Brown #3a2512 */
   
   /* System Status Colors */
@@ -184,18 +184,17 @@ const GlobalStyles = createGlobalStyle`
 /* ===== Dark Mode Theme Overrides ===== */
 .dark {
   /* Invert contrast and drop brightness while keeping nature/earth tones */
-  --color-brand-background: oklch(0.14 0.015 150);  /* Deep muted forest background */
+  --color-brand-background: oklch(0.19 0 0);  /* Deep muted forest background */
   --color-brand-foreground: oklch(0.94 0.02 85);    /* Soft warm cream text */
   --color-brand-dark: oklch(0.08 0.01 150);
-  --color-brand-light: oklch(0.20 0.02 150);
+  --color-brand-light: oklch(21.78% 0.000 0);
   --color-brand-muted: oklch(0.65 0.02 85);
-  
-  --color-brand-primary: oklch(0.55 0.07 150);     /* Brighter forest green for dark background readability */
-  --color-brand-secondary: oklch(0.80 0.08 85);    /* Retain soft warm cabin glow */
+  --color-brand-primary: oklch(0.66 0.1 149.75);     /* Brighter forest green for dark background readability */
+  --color-brand-secondary: oklch(82.46% 0.123 71.91);/* Retain soft warm cabin glow */
   --color-brand-accent: oklch(0.40 0.05 60);       /* Lighter rustic brown */
 
   /* Interactive Variants Updates for Dark Backgrounds */
-  --color-primary-hover: color-mix(in oklch, var(--color-brand-primary), white 15%);
+  --color-primary-hover: color-mix(in oklch, var(--color-brand-primary), white 65%);
   --color-primary-active: color-mix(in oklch, var(--color-brand-primary), white 25%);
   --color-primary-focus: color-mix(in oklch, var(--color-brand-primary), black 20%);
   
