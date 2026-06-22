@@ -8,6 +8,7 @@
  */
 
 export const spacingTokens = {
+  0:  'var(--space-0)',  //  0px
   1:  'var(--space-1)',  //  4px
   2:  'var(--space-2)',  //  8px
   3:  'var(--space-3)',  // 12px
@@ -23,6 +24,7 @@ export type SpacingScale = keyof typeof spacingTokens;
 
 // Raw pixel values — for use in non-CSS contexts (e.g. canvas, SVG, animation libraries)
 export const spacingRaw = {
+  0: 0,
   1:  4,
   2:  8,
   3:  12,

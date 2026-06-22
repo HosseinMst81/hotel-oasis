@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import styled from "styled-components";
+import { BookingsList } from "../components/Bookings/BookingsList";
 
 const Container = styled.div`
   padding: 2rem;
@@ -17,6 +18,7 @@ const Bookings: FC = () => {
     <Container>
       <Title>Bookings</Title>
       <p>Manage all bookings</p>
+      <BookingsList/>
     </Container>
   );
 };

@@ -1,7 +1,7 @@
-import type { FC } from "react";
 import styled from "styled-components";
-import DesignTokensTestDashboard from "../design/components/test/DesignTokensTestDashboard";
 import Container from "../design/primitives/Container/Container";
+import type { FC } from "react";
+
 
 const Title = styled.h1`
   font-size: 2.4rem;
@@ -15,7 +15,6 @@ const Dashboard: FC = () => {
     <Container p={5}>
       <Title>Dashboard</Title>
       <p>Welcome to the hotel management dashboard</p>
-      <DesignTokensTestDashboard/>
     </Container>
   );
 };

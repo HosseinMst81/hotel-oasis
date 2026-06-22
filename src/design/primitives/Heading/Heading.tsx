@@ -38,7 +38,7 @@ const StyledHeading = styled.h1<HeadingProps>`
     }
   }}
   ${({ textAlign = "left" }) => textAlignStyles(textAlign)}
-  ${({ textColor }) => textColor && textColorStyles(textColor)};
+  ${({ textColor="primary" }) => textColor && textColorStyles(textColor)};
   ${(props) => marginStyles(props)}
   ${(props) => paddingStyles(props)}
 `;

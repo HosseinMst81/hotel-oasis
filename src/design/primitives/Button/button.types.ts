@@ -8,11 +8,22 @@ import type {
   HasSize,
   HasTransition,
   HasDisabled,
+  HasLeftIcon,
+  HasRightIcon,
+  HasFontFamily,
+  HasFontSize,
+  HasFontWeight,
+  HasTextColor,
+  HasLetterSpacing,
+  HasLineHeight,
 } from "../../shared/capabilities";
 
 
 export interface ButtonProps
   extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>, // For native button actions like : onClick , onMouseHover ,...
+    HasLeftIcon,
+    HasRightIcon,
     HasLoading,
     HasRounded,
     HasSize,
@@ -21,6 +32,12 @@ export interface ButtonProps
     HasMargin,
     HasAppearance,
     HasDisabled,
-    HasPadding {
-  children: React.ReactNode;
+    HasPadding,
+    HasFontSize,
+    HasTextColor,
+    HasFontFamily,
+    HasLineHeight,
+    HasLetterSpacing,
+    HasFontWeight {
+  children?: React.ReactNode;
 }

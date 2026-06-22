@@ -1,0 +1,399 @@
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[]
+
+export type Database = {
+  // Allows to automatically instantiate createClient with right options
+  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
+  __InternalSupabase: {
+    PostgrestVersion: "14.5"
+  }
+  public: {
+    Tables: {
+      app_settings: {
+        Row: {
+          breakfast_price: number
+          id: number
+          max_guests_per_booking: number
+          max_nights: number
+          min_nights: number
+        }
+        Insert: {
+          breakfast_price: number
+          id?: number
+          max_guests_per_booking?: number
+          max_nights?: number
+          min_nights?: number
+        }
+        Update: {
+          breakfast_price?: number
+          id?: number
+          max_guests_per_booking?: number
+          max_nights?: number
+          min_nights?: number
+        }
+        Relationships: []
+      }
+      bookings: {
+        Row: {
+          arrival_date: string
+          booking_id: string
+          breakfast_price: number | null
+          cabin_id: string
+          cabin_price: number
+          cancelled_at: string | null
+          cancelled_by: string | null
+          checked_in_at: string | null
+          checked_in_by: string | null
+          checked_out_at: string | null
+          checked_out_by: string | null
+          created_at: string
+          departure_date: string
+          discount_amount: number | null
+          extras_price: number | null
+          guest_id: string
+          has_breakfast: boolean
+          is_paid: boolean
+          num_guests: number
+          num_nights: number
+          observations: string | null
+          paid_amount: number | null
+          status: string
+          total_price: number
+        }
+        Insert: {
+          arrival_date: string
+          booking_id?: string
+          breakfast_price?: number | null
+          cabin_id: string
+          cabin_price: number
+          cancelled_at?: string | null
+          cancelled_by?: string | null
+          checked_in_at?: string | null
+          checked_in_by?: string | null
+          checked_out_at?: string | null
+          checked_out_by?: string | null
+          created_at?: string
+          departure_date: string
+          discount_amount?: number | null
+          extras_price?: number | null
+          guest_id: string
+          has_breakfast?: boolean
+          is_paid?: boolean
+          num_guests: number
+          num_nights: number
+          observations?: string | null
+          paid_amount?: number | null
+          status?: string
+          total_price: number
+        }
+        Update: {
+          arrival_date?: string
+          booking_id?: string
+          breakfast_price?: number | null
+          cabin_id?: string
+          cabin_price?: number
+          cancelled_at?: string | null
+          cancelled_by?: string | null
+          checked_in_at?: string | null
+          checked_in_by?: string | null
+          checked_out_at?: string | null
+          checked_out_by?: string | null
+          created_at?: string
+          departure_date?: string
+          discount_amount?: number | null
+          extras_price?: number | null
+          guest_id?: string
+          has_breakfast?: boolean
+          is_paid?: boolean
+          num_guests?: number
+          num_nights?: number
+          observations?: string | null
+          paid_amount?: number | null
+          status?: string
+          total_price?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_cabin_id_fkey"
+            columns: ["cabin_id"]
+            isOneToOne: false
+            referencedRelation: "cabins"
+            referencedColumns: ["cabin_id"]
+          },
+          {
+            foreignKeyName: "bookings_cancelled_by_fkey"
+            columns: ["cancelled_by"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "bookings_checked_in_by_fkey"
+            columns: ["checked_in_by"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "bookings_checked_out_by_fkey"
+            columns: ["checked_out_by"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "bookings_guest_id_fkey"
+            columns: ["guest_id"]
+            isOneToOne: false
+            referencedRelation: "guests"
+            referencedColumns: ["guest_id"]
+          },
+        ]
+      }
+      cabins: {
+        Row: {
+          base_price: number
+          cabin_id: string
+          capacity: number
+          discount_percent: number | null
+          name: string
+          photo_url: string | null
+        }
+        Insert: {
+          base_price: number
+          cabin_id?: string
+          capacity: number
+          discount_percent?: number | null
+          name: string
+          photo_url?: string | null
+        }
+        Update: {
+          base_price?: number
+          cabin_id?: string
+          capacity?: number
+          discount_percent?: number | null
+          name?: string
+          photo_url?: string | null
+        }
+        Relationships: []
+      }
+      guests: {
+        Row: {
+          country_code: string
+          email: string
+          full_name: string
+          guest_id: string
+          national_id: string | null
+          nationality: string | null
+        }
+        Insert: {
+          country_code: string
+          email: string
+          full_name: string
+          guest_id?: string
+          national_id?: string | null
+          nationality?: string | null
+        }
+        Update: {
+          country_code?: string
+          email?: string
+          full_name?: string
+          guest_id?: string
+          national_id?: string | null
+          nationality?: string | null
+        }
+        Relationships: []
+      }
+      users: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          email: string
+          name: string
+          password_hash: string
+          role: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          email: string
+          name: string
+          password_hash: string
+          role?: string
+          user_id?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          email?: string
+          name?: string
+          password_hash?: string
+          role?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
+}
+
+type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">
+
+type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, "public">]
+
+export type Tables<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+        DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
+    : never = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+      DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+      Row: infer R
+    }
+    ? R
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])
+    ? (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])[DefaultSchemaTableNameOrOptions] extends {
+        Row: infer R
+      }
+      ? R
+      : never
+    : never
+
+export type TablesInsert<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof DefaultSchema["Tables"]
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Insert: infer I
+    }
+    ? I
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
+        Insert: infer I
+      }
+      ? I
+      : never
+    : never
+
+export type TablesUpdate<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof DefaultSchema["Tables"]
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Update: infer U
+    }
+    ? U
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
+        Update: infer U
+      }
+      ? U
+      : never
+    : never
+
+export type Enums<
+  DefaultSchemaEnumNameOrOptions extends
+    | keyof DefaultSchema["Enums"]
+    | { schema: keyof DatabaseWithoutInternals },
+  EnumName extends DefaultSchemaEnumNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
+    : never = never,
+> = DefaultSchemaEnumNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
+  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
+    ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
+    : never
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof DefaultSchema["CompositeTypes"]
+    | { schema: keyof DatabaseWithoutInternals },
+  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never = never,
+> = PublicCompositeTypeNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
+    ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
+    : never
+
+export const Constants = {
+  public: {
+    Enums: {},
+  },
+} as const
+
+export type AppSettingRow = Database["public"]["Tables"]["app_settings"]["Row"];
+export type AppSettingInsert = Database["public"]["Tables"]["app_settings"]["Insert"];
+export type AppSettingUpdate = Database["public"]["Tables"]["app_settings"]["Update"];
+
+export type BookingRow = Database["public"]["Tables"]["bookings"]["Row"];
+export type BookingInsert = Database["public"]["Tables"]["bookings"]["Insert"];
+export type BookingUpdate = Database["public"]["Tables"]["bookings"]["Update"];
+
+export type CabinRow = Database["public"]["Tables"]["cabins"]["Row"];
+export type CabinInsert = Database["public"]["Tables"]["cabins"]["Insert"];
+export type CabinUpdate = Database["public"]["Tables"]["cabins"]["Update"];
+
+export type GuestRow = Database["public"]["Tables"]["guests"]["Row"];
+export type GuestInsert = Database["public"]["Tables"]["guests"]["Insert"];
+export type GuestUpdate = Database["public"]["Tables"]["guests"]["Update"];
+
+export type UserRow = Database["public"]["Tables"]["users"]["Row"];
+export type UserInsert = Database["public"]["Tables"]["users"]["Insert"];
+export type UserUpdate = Database["public"]["Tables"]["users"]["Update"];

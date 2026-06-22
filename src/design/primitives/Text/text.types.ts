@@ -2,7 +2,6 @@ import type {
   HasClassName,
   HasMargin,
   HasPadding,
-  HasSize,
 } from "../../shared/capabilities";
 import type { HasFontFamily } from "../../shared/capabilities/has-font-family";
 import type { HasFontSize } from "../../shared/capabilities/has-font-size";
@@ -15,17 +14,19 @@ import type { HasFontWeight } from "../../shared/capabilities/has-weight";
 
 export interface TextProps
   extends
+    React.HTMLAttributes<HTMLDivElement>,
     HasFontSize,
+    HasTextColor,
+    HasFontFamily,
+    HasFontWeight,
+    HasLineHeight,
+    HasLetterSpacing,
     HasfullWidth,
     HasMargin,
     HasPadding,
     HasClassName,
-    HasFontWeight,
-    HasLetterSpacing,
-    HasLineHeight,
-    HasTextColor,
-    HasFontFamily,
     HasLayout {
   /** The content of the text element. */
+  as?: "p" | "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   children: React.ReactNode;
 }

@@ -38,6 +38,7 @@
     "@storybook/addon-mcp": "^0.6.0",
     "@storybook/addon-vitest": "^10.4.3",
     "@storybook/react-vite": "^10.4.3",
+    "@tanstack/react-query-devtools": "^5.101.0",
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
     "@types/react-datepicker": "^6.2.0",
