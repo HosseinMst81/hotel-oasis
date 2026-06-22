@@ -63,7 +63,7 @@ const LogoBadge = styled.div`
   justify-content: center;
   overflow: hidden;
   padding: 0.4rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-xs);
 `;
 
 const LogoImg = styled.img`

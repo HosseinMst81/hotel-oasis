@@ -10,6 +10,7 @@ import type { ColumnConfig, SortState } from "../DataTable/DataTable.types";
 import type { CabinRow } from "../../types/database.types";
 import Text from "../../design/primitives/Text/Text";
 import { Badge } from "../../design/primitives";
+import { Image } from "../../design/primitives/Image/Image";
 
 export function CabinsTable() {
   const [page, setPage] = useState(1);
@@ -27,6 +28,29 @@ export function CabinsTable() {
   const { mutate: bulkDelete } = useBulkDeleteCabins(params);
 
   const columns: ColumnConfig<CabinRow>[] = [
+    {
+      field: "photo_url", // actual field in CabinRow
+      label: "Photo",
+      type: "image",
+      sortable: false,
+      render: (row) => (
+        <Image
+          src={row.photo_url!}
+          alt={row.name}
+          style={{
+            width: "8rem",
+            height: "6rem",
+            borderRadius: "var(--radius-md)",
+            objectFit: "cover",
+            boxShadow: "var(--shadow-sm)",
+          }}
+          // Optional fallback on broken image
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).style.display = "none";
+          }}
+        />
+      ),
+    },
     {
       field: "name",
       label: "Cabin",
@@ -65,7 +89,11 @@ export function CabinsTable() {
       sortable: true,
       render: (row) => {
         if (!row.discount_percent || row.discount_percent === 0) {
-          return <Text textAlign="center" fontWeight="thin">—</Text>;
+          return (
+            <Text textAlign="center" fontWeight="thin">
+              —
+            </Text>
+          );
         }
         const discountAmount = row.base_price * (row.discount_percent / 100);
         return <CabinCellText>-${discountAmount.toFixed(2)}</CabinCellText>;

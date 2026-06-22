@@ -39,12 +39,12 @@ import Stack from "../../design/primitives/Stack/Stack";
 // ─── STYLED COMPONENTS ───────────────────────────────────────────────────────
 
 const TableWrapper = styled.div`
-  max-width: 1152px;
   margin: 0 auto;
   overflow: hidden;
   border-radius: var(--radius-lg);
   background: var(--color-brand-light);
   box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border-subtle);
   position: relative;
 `;
 
@@ -77,7 +77,7 @@ const BulkActionBar = styled.div<{ $visible: boolean }>`
   align-items: center;
   justify-content: space-between;
   padding: var(--space-3) var(--space-6);
-  background: var(--color-brand-primary);
+  background: var(--color-brand-background);
   color: var(--color-brand-secondary);
   border-bottom: 1px solid
     color-mix(in oklch, var(--color-brand-secondary) 30%, transparent);
@@ -103,7 +103,7 @@ const BulkCountBadge = styled.span`
   height: 24px;
   border-radius: 50%;
   background: var(--color-brand-secondary);
-  color: var(--color-brand-primary);
+  color: var(--color-brand-background);
   font-size: 12px;
   font-weight: 700;
 `;
@@ -154,6 +154,36 @@ const TableScroll = styled.div`
   max-height: 65vh;
   position: relative;
   z-index: 2;
+
+  /* ── Firefox ── */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-base) transparent;
+
+  /* ── WebKit (Chrome, Safari, Edge) ── */
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-border-base);
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    transition: background 0.2s ease;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brand-muted);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
 `;
 
 const StyledTable = styled.table`
@@ -445,7 +475,7 @@ export function DataTable<TData extends Record<string, unknown>>(
               rounded="md"
               py={2}
               px={3}
-              leftIcon={<FiLayout size={18}/>}
+              leftIcon={<FiLayout size={18} />}
               onClick={() => setColMenuOpen(!colMenuOpen)}
             >
               Columns
@@ -714,7 +744,7 @@ export function DataTable<TData extends Record<string, unknown>>(
           fontFamily="primary"
           textColor="muted"
           fontSize="sm"
-          letterSpacing="wide"
+          letterSpacing="widest"
         >
           Showing{" "}
           <span
@@ -754,6 +784,7 @@ export function DataTable<TData extends Record<string, unknown>>(
               <Button
                 key={p}
                 fontSize="sm"
+                appearance="solid"
                 rounded="lg"
                 style={{
                   paddingInline: "1.7rem",

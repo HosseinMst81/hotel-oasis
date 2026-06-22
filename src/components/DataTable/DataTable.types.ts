@@ -9,7 +9,7 @@ export type SortDescriptor<TData> = {
 
 export type SortState<TData> = SortDescriptor<TData>[];
 
-export type ColumnType = "text" | "number" | "date" | "badge" | "custom";
+export type ColumnType = "text" | "number" | "date" | "badge" | "image" | "custom";
 
 export type BadgeTone = "indigo" | "green" | "yellow" | "gray" | "red" | "blue" | "purple" | "emerald" | "amber" | "rose" | "sky";
 
