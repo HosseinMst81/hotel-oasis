@@ -3,8 +3,12 @@ import type { JSX } from "react";
 import type { HasInline } from "../../shared/capabilities/has-inline";
 import styled from "styled-components";
 import { inlineStyles } from "../../shared/styles/inlineStylesMap";
+import type { HasFontFamily } from "../../shared/capabilities/has-font-family";
+import type { HasFontSize } from "../../shared/capabilities/has-font-size";
+import type { HasFontWeight } from "../../shared/capabilities/has-weight";
 
-export interface InlineProps extends HasChildren, HasInline {
+export interface InlineProps
+  extends HasChildren, HasFontWeight, HasInline, HasFontFamily, HasFontSize {
   as?: keyof JSX.IntrinsicElements;
   children: React.ReactNode;
 }

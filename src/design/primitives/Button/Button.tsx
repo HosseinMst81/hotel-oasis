@@ -14,11 +14,12 @@
 
 import styled from "styled-components";
 import Loading from "../../../pages/Loading";
-import { appearanceStyleMap, roundedMap, sizeMap } from "../../shared/styles";
+import { appearanceStyleMap, roundedMap, sizeMap, typographyStyles } from "../../shared/styles";
 import { marginStyles } from "../../shared/styles/marginStylesMap";
 import { paddingStyles } from "../../shared/styles/paddingStylesMap";
 import { transitionStyles } from "../../shared/styles/transitionStylesMap";
 import type { ButtonProps } from "./button.types";
+import { fontStylesMap } from "../../shared/styles/fontStylesMap";
 
 const StyledButton = styled.button<ButtonProps>`
   ${({ rounded = "none" }) => roundedMap[rounded]}
@@ -27,6 +28,13 @@ const StyledButton = styled.button<ButtonProps>`
     appearanceStyleMap(appearance, colorScheme)}
   ${(props) => marginStyles(props)}
   ${(props) => paddingStyles(props)}
+  ${({
+      lineHeight = "normal",
+      letterSpacing = "normal",
+      fontWeight = "medium",
+      fontSize = "md",
+    }) => typographyStyles({ fontWeight, lineHeight, letterSpacing, fontSize })}
+    ${({ fontFamily = "secondary" }) => fontStylesMap[fontFamily]}
 
   ${({
     transitionDelay = "none",

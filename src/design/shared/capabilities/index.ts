@@ -14,4 +14,10 @@ export * from "./has-variant";
 export * from "./has-left-icon";
 export * from "./has-right-icon";
 export * from "./polymorphic";
-
+export * from "./has-font-family";
+export * from "./has-font-size";
+export * from "./has-weight";
+export * from "./has-shadow";
+export * from "./has-text-color";
+export * from "./has-letter-spacing";
+export * from "./has-line-height";

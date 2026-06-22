@@ -25,6 +25,8 @@ import {
 } from "../../utils/DataTable.utils";
 import type { DataTableProps } from "./DataTable.types";
 import { Input } from "../../design/primitives";
+import Text from "../../design/primitives/Text/Text";
+import Inline from "../../design/primitives/Inline/Inline";
 
 // ─── STYLED COMPONENTS ───────────────────────────────────────────────────────
 
@@ -74,8 +76,6 @@ const SearchIcon = styled(FiSearch)`
   font-size: 2rem;
   pointer-events: none;
 `;
-
-
 
 const BulkActionBar = styled.div<{ $visible: boolean }>`
   position: sticky;
@@ -333,40 +333,10 @@ const Pagination = styled.div`
   border-top: 1px solid var(--color-border-base);
 `;
 
-const PaginationInfo = styled.p`
-  font-size: var(--text-sm);
-  color: var(--color-text-secondary);
-`;
-
 const PaginationControls = styled.div`
   display: flex;
   align-items: center;
   gap: var(--space-2);
-`;
-
-const PageButton = styled.button<{ $active?: boolean }>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-md);
-  border: ${(props) =>
-    !props.$active ? "1px solid var(--color-border-base)" : "none"};
-  background: ${(props) =>
-    props.$active ? "var(--color-brand-primary)" : "transparent"};
-  color: ${(props) => (props.$active ? "var(--color-brand-light)" : "inherit")};
-  font-weight: ${(props) => (props.$active ? "700" : "400")};
-  transition: background 0.2s;
-
-  &:hover:not(:disabled) {
-    background: var(--color-brand-background);
-  }
-
-  &:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-  }
 `;
 
 const ColumnVisibilityMenu = styled.div`
@@ -381,7 +351,6 @@ const ColumnVisibilityMenu = styled.div`
   box-shadow: var(--shadow-lg);
   z-index: ${zIndex.dropdown};
 `;
-
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
 
@@ -798,51 +767,80 @@ export function DataTable<TData extends Record<string, unknown>>(
 
       {/* PAGINATION */}
       <Pagination>
-        <PaginationInfo>
+        <Text
+          fontFamily="primary"
+          textColor="muted"
+          fontSize="sm"
+          letterSpacing="wide"
+        >
           Showing{" "}
-          <span style={{ fontWeight: 700, color: "var(--color-text-primary)" }}>
+          <span
+            style={{ fontWeight: 700, color: "var(--color-brand-secondary)" }}
+          >
             {pagination.total > 0 ? startIndex : 0}
           </span>{" "}
           to{" "}
-          <span style={{ fontWeight: 700, color: "var(--color-text-primary)" }}>
+          <span
+            style={{ fontWeight: 700, color: "var(--color-brand-secondary)" }}
+          >
             {endIndex}
           </span>{" "}
           of{" "}
-          <span style={{ fontWeight: 700, color: "var(--color-text-primary)" }}>
+          <span
+            style={{ fontWeight: 700, color: "var(--color-brand-secondary)" }}
+          >
             {pagination.total}
           </span>{" "}
           cabins
-        </PaginationInfo>
+        </Text>
 
-        <PaginationControls>
-          <PageButton
+        <Inline spacing={2}>
+          <Button
+            appearance="outline"
+            rounded="lg"
             onClick={() => onPageChange(pagination.page - 1)}
             disabled={pagination.page <= 1}
+            style={{ paddingInline: "1.1rem", paddingBlock: "1.1rem" }}
           >
-            <FiArrowLeft size={16} />
-          </PageButton>
+            <FiArrowLeft size={18} />
+          </Button>
 
           {/* Simple page numbers: 1, 2, 3 (can be expanded) */}
           {Array.from({ length: Math.min(3, totalPages) }, (_, i) => i + 1).map(
             (p) => (
-              <PageButton
+              <Button
                 key={p}
-                $active={p === pagination.page}
+                fontSize="sm"
+                rounded="lg"
+                style={{
+                  paddingInline: "1.7rem",
+                  paddingBlock: "1rem",
+                  cursor:'initial',
+                  backgroundColor:
+                    p === pagination.page
+                      ? "var(--color-brand-primary)"
+                      : "var(--color-brand-muted)",
+                }}
                 onClick={() => onPageChange(p)}
               >
                 {p}
-              </PageButton>
+              </Button>
             )
           )}
 
-          <PageButton
+          <Button
             onClick={() => onPageChange(pagination.page + 1)}
-            disabled={pagination.page >= totalPages}
+            rounded="lg"
+            appearance="outline"
+            disabled={pagination.page >= totalPages || pagination.total === 0}
+            style={{ paddingInline: "1.1rem", paddingBlock: "1.1rem" }}
           >
-            <FiArrowRight size={16} />
-          </PageButton>
-        </PaginationControls>
+            <FiArrowRight size={18} />
+          </Button>
+        </Inline>
       </Pagination>
     </TableWrapper>
   );
 }
+
+export default DataTable;

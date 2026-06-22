@@ -140,6 +140,7 @@ const GlobalStyles = createGlobalStyle`
   --radius-full: 9999px;
 
   /* ===== Spacing ===== */
+  --space-0: 0rem;        /*  0px  */
   --space-1: 0.4rem;   /*  4px  */
   --space-2: 0.8rem;   /*  8px  */
   --space-3: 1.2rem;   /* 12px  */
